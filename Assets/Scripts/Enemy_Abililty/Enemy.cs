@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
     [Header("Attack Player!")]//아직 미구현
     [SerializeField] protected float attackCooldown;
     protected float attackTime;
-    public void Awake()
+    public virtual void Awake()
     {
         spriteRender = GetComponentInChildren<SpriteRenderer>();
         originalScale=spriteRender.transform.localScale;
@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
         isWaiting = false;
         if (spriteRender != null)
         {
-            spriteRender.transform.localScale = originalScale;//일단 기본 크기로 하고, 나중에 체력에 따른 크기를 조절하자.
+            spriteRender.transform.localScale = originalScale;//일단 기본 크기로 하고, 나중에 체력에 따른 크기를 조절하자.?
             spriteRender.color = HpColor;
         }
         SetNewReconTargetPosition();

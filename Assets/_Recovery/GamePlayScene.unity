@@ -3090,6 +3090,8 @@ MonoBehaviour:
   - {fileID: 6899939819295185595, guid: ba9a1337878938d4ca9f630dd04f6819, type: 3}
   - {fileID: 3025632684166903440, guid: 11f473e76ed1f7b419609ec056b6d90c, type: 3}
   - {fileID: 2768765263029685287, guid: 324748b805268a64ab3a3b080195b785, type: 3}
+  - {fileID: 6420628649001140882, guid: 9f27337d6d6c05746b198e324cdce80a, type: 3}
+  - {fileID: 6420628649001140882, guid: 9f27337d6d6c05746b198e324cdce80a, type: 3}
 --- !u!4 &1311011528
 Transform:
   m_ObjectHideFlags: 0

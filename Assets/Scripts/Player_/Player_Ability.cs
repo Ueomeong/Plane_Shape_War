@@ -25,6 +25,10 @@ public class Player_Ability : MonoBehaviour
         {
             GameManager.Instance.poolmanager.Get(8);
         }
+        if (Keyboard.current.uKey.wasPressedThisFrame)
+        {
+            GameManager.Instance.poolmanager.Get(5);
+        }
     }
     private void FixedUpdate()
     {

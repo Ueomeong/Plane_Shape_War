@@ -32,6 +32,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //일단 충돌하면 사라지게
+        if (collision.CompareTag("Ignore")) return;
         if(pixelHitEffect != null)
         {
             GameObject effectHit = GameManager.Instance.poolmanager.Get(1);//총알 이펙트
