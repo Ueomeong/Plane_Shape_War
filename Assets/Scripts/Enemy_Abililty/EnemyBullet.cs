@@ -19,4 +19,12 @@ public class EnemyBullet : MonoBehaviour
     {
         
     }
+    public void Init(Vector3 position,Quaternion rotation)
+    {
+        transform.position = position;
+        transform.rotation = rotation;
+
+        Vector2 fireDirection = transform.right;
+        rigid.linearVelocity = fireDirection * speed;
+    }
 }

@@ -90,10 +90,10 @@ public class Diamond : Enemy
 
         currentChargeTime = 0f;
         rb.linearVelocity=Vector2.zero;
-        while (currentChargeTime <= 0.1f)
+        while (currentChargeTime <= 0.08f)
         {
             currentChargeTime += Time.fixedDeltaTime;
-            ts.localScale = Vector3.Lerp(fullChargedSize, ShootingSize, currentChargeTime / 0.1f);
+            ts.localScale = Vector3.Lerp(fullChargedSize, ShootingSize, currentChargeTime / 0.08f);
             rb.AddForce((playerTransform.position - transform.position).normalized * -1 * 50f);
             yield return new WaitForFixedUpdate();
         }
@@ -155,6 +155,12 @@ public class Diamond : Enemy
 
     private void Fire()
     {
-        GameManager.Instance.poolmanager.Get(9);
+        GameObject bulletObj = GameManager.Instance.poolmanager.Get(9);
+
+        EnemyBullet bullet = bulletObj.GetComponent<EnemyBullet>();
+        if(bullet!=null)
+        {
+            bullet.Init(transform.position, transform.rotation);
+        }
     }
 }
