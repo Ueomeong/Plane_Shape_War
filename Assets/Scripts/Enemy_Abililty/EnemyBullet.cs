@@ -6,7 +6,7 @@ public class EnemyBullet : MonoBehaviour
     private Transform EnemyTransform;
     private Rigidbody2D rigid;
     private BoxCollider2D collid;
-    public float speed = 17.0f;
+    public float speed = 15.0f;
     public GameObject pixelHitEffect;
     public float damage = 1f;// 데미지
                                 //public int per 관통?
@@ -26,5 +26,31 @@ public class EnemyBullet : MonoBehaviour
 
         Vector2 fireDirection = transform.right;
         rigid.linearVelocity = fireDirection * speed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //일단 충돌하면 사라지게
+        if (collision.CompareTag("Enemy")| collision.CompareTag("Ignore")) return;
+        if (pixelHitEffect != null)
+        {
+            GameObject effectHit = GameManager.Instance.poolmanager.Get(10);//총알 이펙트
+            if (effectHit != null)
+            {
+                Vector2 hitPoint = collision.ClosestPoint(transform.position);
+                effectHit.transform.position = hitPoint;
+                effectHit.transform.rotation = transform.rotation;
+            }
+        }
+        if (collision.CompareTag("Player"))
+        {
+
+        }
+        rigid.linearVelocity = Vector2.zero;
+        Deactive();
+    }
+    void Deactive()
+    {
+        gameObject.SetActive(false);
     }
 }
