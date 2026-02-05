@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
     private Transform mousepointer_transform;
     private Rigidbody2D rigid;
     private BoxCollider2D collid;
-    public float speed = 20.0f;
+    public float speed = 30.0f;
     public GameObject pixelHitEffect;
     public float damage=10.0f;// 데미지
     //public int per 관통?
