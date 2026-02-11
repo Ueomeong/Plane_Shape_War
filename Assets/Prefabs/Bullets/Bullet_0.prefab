@@ -106,9 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bff53ffbaf048e4a89ac8040dadef2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  PlayerData: {fileID: 11400000, guid: 62fbb12b018bd8a4d9d7ca68e9915fd3, type: 2}
   speed: 30
   pixelHitEffect: {fileID: 4840079796923635784, guid: 8cc4f4bd486f8ce45b8075705f534a28, type: 3}
-  damage: 30
 --- !u!50 &4465530442223861998
 Rigidbody2D:
   serializedVersion: 5

@@ -3,11 +3,13 @@ using UnityEngine.InputSystem;
 
 public class Player_Ability : MonoBehaviour
 {
+    public PlayerData PlayerData;
     public bool moveable;
-    public float rateOfFire = 0.15f;
+    public float rateOfFire => PlayerData.rateOfFire;
     public float coolTime=0f;
     void Update()
     {
+        if(!GameManager.Instance.isLive) { return; }
         moveable = GameManager.Instance.player_move.isCharging;
         if (Mouse.current.leftButton.isPressed && !moveable && coolTime<=0f) 
         {
@@ -29,14 +31,16 @@ public class Player_Ability : MonoBehaviour
         {
             GameManager.Instance.poolmanager.Get(5);
         }
-    }
-    private void FixedUpdate()
-    {
-        if (coolTime > 0f)
+        if (Keyboard.current.xKey.wasPressedThisFrame)
         {
-            coolTime -= Time.fixedDeltaTime;
+            GameManager.Instance.player_state.TakeDamage(1);
+        }
+        if (coolTime >= 0f)
+        {
+            coolTime -= Time.deltaTime;
         }
     }
+
     void shoot()
     {
         coolTime=rateOfFire;

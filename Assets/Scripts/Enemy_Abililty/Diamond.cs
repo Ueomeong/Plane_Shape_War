@@ -45,6 +45,8 @@ public class Diamond : Enemy
 
     protected override void FixedUpdate()
     {
+
+        if (!GameManager.Instance.isLive) { return; }
         DetectPlayer();
         outlineSpriteRenderer.color = Color.Lerp(outlineColor, playerChasingColor, willToChase / 3);
         RandMoveTimeCount-=Time.fixedDeltaTime;

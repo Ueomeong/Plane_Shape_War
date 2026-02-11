@@ -2,16 +2,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Game Data")]
     public static GameManager Instance;
     public int stage;//클리어한 스테이지
     public int money;//돈 보유량
     public int temporaryMoney;//저장했다가 게임 클리어시 이 값을 매개변수로 넣어 MoneyChage호출
+    [Header("GamePlay Data")]
+    public bool isLive { get; private set; } = true;
     public Player_Move player_move;
-    public Player_Stat player_stat;
-    public Player_State Player_state;
+    public Player_State player_state;
     public mousePointer mousepointer;
     public PoolManager poolmanager;
+    public PlayerData PlayerData;
     public CameraShaking camerashaking;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -25,6 +30,18 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void PauseGame()
+    {
+        isLive = false;
+        Time.timeScale = 0;
+    }
+    public void ResumeGame()
+    {
+        isLive = true;
+        Time.timeScale = 1;
+    }
+
 
 
     //데이터 저장과 불러오기

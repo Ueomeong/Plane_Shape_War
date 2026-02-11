@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 public class Player_Move : MonoBehaviour
 {
+    public PlayerData PlayerData;
     [Header("Componenets")]
     public Rigidbody2D rigid;//플레이어의 rigidbody2D
     public SpriteRenderer Player_renderer;//플레이어 렌더러
@@ -12,7 +13,7 @@ public class Player_Move : MonoBehaviour
     [Header("Basic Movement Settings")]
     public Vector2 inputVec;//input방향 벡터로 저장
     public Vector2 currentVelocity;//?
-    public float moveSpeed = 2.0f;
+    public float moveSpeed => PlayerData.moveSpeed;
     public float smoothTime = 0.2f;
     [Header("Charge Movement Settings")]
     public Vector2 ShootingDir;//첫 발사될 방향 저장
@@ -21,9 +22,9 @@ public class Player_Move : MonoBehaviour
     public float maxAngleDegree = 50f;//충전중 방향전환의 한계치
     public float ShootingSpeed;//발사될 힘?가속의 크기
     public Boolean isCharging=false;//충전중인가
-    public float maxShooingForce = 30.0f;
-    public float minShooingForce = 2.0f;
-    public float maxChargeTime = 1.0f;
+    public float maxShooingForce => PlayerData.maxShooingForce;
+    public float minShooingForce =>PlayerData.minShooingForce;
+    public float maxChargeTime => PlayerData.maxChargeTime;
     public float currentChargeTime = 0.0f;
     public float ShootingTime = 0.0f;//감속을 받지 않고 날라가는 시간
     public Boolean isShooting =false;//돌진 중 인가?
@@ -48,6 +49,7 @@ public class Player_Move : MonoBehaviour
     }
     private void FixedUpdate()//기본 이동 & shoot 호출
     {
+        if (!GameManager.Instance.isLive) { return; }
         if (ShootingTime > 0)//쏘는 동안 발동됨
         {
             

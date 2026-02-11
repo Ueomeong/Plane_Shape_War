@@ -105,6 +105,7 @@ public class Enemy : MonoBehaviour
     }
     protected virtual void FixedUpdate()//오버라이딩 가능 함수 이동 제어
     {
+        if (!GameManager.Instance.isLive) { return; }
         DetectPlayer();
         outlineSpriteRenderer.color = Color.Lerp(outlineColor,playerChasingColor,willToChase/3);
         if(isChasingPlayer)
