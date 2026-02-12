@@ -9,13 +9,18 @@ public class GameManager : MonoBehaviour
     public int temporaryMoney;//저장했다가 게임 클리어시 이 값을 매개변수로 넣어 MoneyChage호출
     [Header("GamePlay Data")]
     public bool isLive { get; private set; } = true;
+
+    [Header("UI")]
+    public GameObject PauseButton;
+    public GameObject PausePanel;
+    [Header("Scripts")]
     public Player_Move player_move;
     public Player_State player_state;
     public mousePointer mousepointer;
     public PoolManager poolmanager;
     public PlayerData PlayerData;
+    public HP_Manager hpManager;
     public CameraShaking camerashaking;
-
 
     private void Awake()
     {
@@ -31,15 +36,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void TogglePauseButton()
+    {
+        if (isLive)
+        {
+            PauseGame();
+        }
+        else 
+        { 
+            ResumeGame();
+        }
+    }
     public void PauseGame()
     {
         isLive = false;
         Time.timeScale = 0;
+        PausePanel.SetActive(true);
+        PauseButton.SetActive(false);
     }
     public void ResumeGame()
     {
         isLive = true;
         Time.timeScale = 1;
+        PausePanel.SetActive(false);
+        PauseButton.SetActive(true);
     }
 
 

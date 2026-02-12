@@ -35,6 +35,10 @@ public class Player_Ability : MonoBehaviour
         {
             GameManager.Instance.player_state.TakeDamage(1);
         }
+        if (Keyboard.current.zKey.wasPressedThisFrame)
+        {
+            GameManager.Instance.player_state.Heal(1);
+        }
         if (coolTime >= 0f)
         {
             coolTime -= Time.deltaTime;

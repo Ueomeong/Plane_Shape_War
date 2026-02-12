@@ -42,17 +42,28 @@ public class Player_State : MonoBehaviour
            
         }
     }
-    public void TakeDamage(int damage)// 일단 int로 하자!
+    public void TakeDamage(int damage)// 일단 int로 하자! 피해 입음!
     {
         if (isInvincible) { return;  }
         GameManager.Instance.camerashaking.ShakeCamera(1.5f, 0.2f);
         isInvincible = true;
         currentInvincibleTime = InvincibleTime;
         PlayerData.currentHP -= damage;
+        GameManager.Instance.hpManager.UpdateHP();
         if (PlayerData.currentHP <= 0)
         {
             Die();
         }
+    }
+
+    public void Heal(int heal)// 일단 int로 하자! 힐을 받음!
+    {
+        PlayerData.currentHP += heal;
+        if (PlayerData.currentHP >= PlayerData.maxHP)
+        {
+            PlayerData.currentHP=PlayerData.maxHP;
+        }
+        GameManager.Instance.hpManager.UpdateHP();
     }
 
     private void Die()
