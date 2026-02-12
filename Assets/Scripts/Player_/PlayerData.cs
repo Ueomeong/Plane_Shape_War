@@ -3,11 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Scriptable Objects/PlayerData")]
 public class PlayerData : ScriptableObject
 {
-    [Header("*HP/Shield")]
+    [Header("*HP/SkillPoint")]
     public int maxHP;
     public int currentHP;
-    public float maxShieldHP;
-    public float currentShieldHP;
+    public int maxSP;
+    public int currentSP;
     public float invincibleTime;
     [Header("*Movement")]
     public float moveSpeed;
@@ -24,6 +24,6 @@ public class PlayerData : ScriptableObject
     public void ResetPlayerData()
     {
         currentHP = maxHP;
-        currentShieldHP = maxShieldHP;
+        currentSP = maxSP;
     }
 }

@@ -44,6 +44,7 @@ public class EnemyBullet : MonoBehaviour
         }
         if (collision.CompareTag("Player"))
         {
+            GameManager.Instance.player_state.TakeDamage(1);
 
         }
         rigid.linearVelocity = Vector2.zero;

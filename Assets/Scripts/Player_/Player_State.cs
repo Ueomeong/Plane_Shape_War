@@ -56,6 +56,25 @@ public class Player_State : MonoBehaviour
         }
     }
 
+    public void UseSP(int value)
+    {
+        PlayerData.currentSP -= value;
+        if (PlayerData.currentSP <=0)
+        {
+            PlayerData.currentSP = 0;
+        }
+        GameManager.Instance.spManager.UpdateSP();
+    }
+    public void GetSP(int value)
+    {
+        PlayerData.currentSP += value;
+        if (PlayerData.currentSP >= PlayerData.maxSP)
+        {
+            PlayerData.currentSP = PlayerData.maxSP;
+        }
+        GameManager.Instance.spManager.UpdateSP();
+    }
+
     public void Heal(int heal)// 일단 int로 하자! 힐을 받음!
     {
         PlayerData.currentHP += heal;

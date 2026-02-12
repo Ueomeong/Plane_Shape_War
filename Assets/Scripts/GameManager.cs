@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public PlayerData PlayerData;
     public HP_Manager hpManager;
     public CameraShaking camerashaking;
-
+    public SP_Manager spManager;
     private void Awake()
     {
         if (Instance == null)

@@ -9,7 +9,11 @@ public class Player_Ability : MonoBehaviour
     public float coolTime=0f;
     void Update()
     {
-        if(!GameManager.Instance.isLive) { return; }
+        if (Keyboard.current.escapeKey.wasPressedThisFrame || Keyboard.current.pKey.wasPressedThisFrame)
+        {
+            GameManager.Instance.TogglePauseButton();
+        }
+        if (!GameManager.Instance.isLive) { return; }
         moveable = GameManager.Instance.player_move.isCharging;
         if (Mouse.current.leftButton.isPressed && !moveable && coolTime<=0f) 
         {
@@ -39,6 +43,16 @@ public class Player_Ability : MonoBehaviour
         {
             GameManager.Instance.player_state.Heal(1);
         }
+
+        if (Keyboard.current.nKey.wasPressedThisFrame)
+        {
+            GameManager.Instance.player_state.UseSP(1);
+        }
+        if (Keyboard.current.mKey.wasPressedThisFrame)
+        {
+            GameManager.Instance.player_state.GetSP(1);
+        }
+
         if (coolTime >= 0f)
         {
             coolTime -= Time.deltaTime;

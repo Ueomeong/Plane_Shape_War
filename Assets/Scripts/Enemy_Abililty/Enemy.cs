@@ -248,10 +248,15 @@ public class Enemy : MonoBehaviour
 
     /// <summary>
 
-    /* 플레이어 공격 추후 추가 예정
-    protected virtual void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GameManager.Instance.player_state.TakeDamage(1);
 
+            // (선택 사항) 플레이어를 밀어내는 물리적 연출을 더하고 싶다면
+            Vector2 pushDirection = (collision.transform.position - transform.position).normalized;
+            collision.rigidbody.AddForce(pushDirection * 1f, ForceMode2D.Impulse);
+        }
     }
-    */
 }

@@ -67,6 +67,11 @@ public class Player_Move : MonoBehaviour
         }
         if (isCharging)//충전 로직
         {
+            if (PlayerData.currentSP <= 0)//부득이한 이유로 SP가 0이된다면,
+            {
+                CancelCharge();
+                return;
+            }
             rigid.linearVelocity = Vector2.zero;//일단 정지
 
             ///마우스 방향
@@ -106,7 +111,7 @@ public class Player_Move : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)//충돌 판정
     {
-        if (isCharging) { return; }
+        if (isCharging || PlayerData.currentSP<=0) { return; }
         ContactPoint2D contact = collision.GetContact(0);
         if (Vector2.Dot(inputVec, contact.normal) < -0.7f)
         {
@@ -118,6 +123,7 @@ public class Player_Move : MonoBehaviour
     private void Shoot()
     {
         //발사!
+        GameManager.Instance.player_state.UseSP(1);//SP한개 사용!
         isShooting = true;
         float ChargeRatio = currentChargeTime / maxChargeTime;
         float finalShootingForce = Mathf.Lerp(minShooingForce, maxShooingForce, ChargeRatio);//최종힘
@@ -170,5 +176,13 @@ public class Player_Move : MonoBehaviour
         Visual_transform.localPosition = Vector3.zero;
         Visual_transform.localScale = targetScale;
         
+    }
+
+    private void CancelCharge()//충전 취소할경우
+    {
+        isCharging = false;
+        currentChargeTime = 0.0f;
+        Visual_transform.localScale = Vector3.one;
+        Player_renderer.color = Color.white;
     }
 }

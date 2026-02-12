@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   maxHP: 10
-  currentHP: 9
-  maxShieldHP: 10
-  currentShieldHP: 10
+  currentHP: 10
+  maxSP: 5
+  currentSP: 5
   invincibleTime: 1
   moveSpeed: 5
   maxShooingForce: 10
