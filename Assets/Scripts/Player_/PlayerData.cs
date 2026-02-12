@@ -12,8 +12,8 @@ public class PlayerData : ScriptableObject
     [Header("*Movement")]
     public float moveSpeed;
     [Header("*Charge Movement")]
-    public float maxShooingForce;
-    public float minShooingForce;
+    public float maxShootingForce;
+    public float minShootingForce;
     public float maxChargeTime;
     [Header("*Charge Attack")]
     public float chargeDamage;

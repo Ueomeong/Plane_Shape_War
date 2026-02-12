@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bdcdfb61cacf14499d865462a4e277, type: 3}
+  m_Name: Stat_maxHP_Gold
+  m_EditorClassIdentifier: Assembly-CSharp::AugmentData
+  augmentName: "\uACE0\uAE30 \uBC18\uCC2C"
+  description: "\uCD5C\uB300 \uCCB4\uB825 +2, \uD604\uC7AC \uCCB4\uB825 +2"
+  icon: {fileID: 0}
+  tier: 1
+  stat_MaxHP: 2
+  stat_CurrentHP: 2
+  stat_MaxSP: 0
+  stat_CurrentSP: 0
+  stat_InvincibleTime: 0
+  stat_MoveSpeed: 0
+  stat_MaxShootingForce: 0
+  stat_MinShootingForce: 0
+  stat_MaxChargeTime: 0
+  stat_ChargeDamage: 0
+  stat_BulletDamage: 0
+  stat_RateOfFire: 0
+  stat_BulletPerShot: 0

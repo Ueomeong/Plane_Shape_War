@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bdcdfb61cacf14499d865462a4e277, type: 3}
+  m_Name: Stat_maxSp_Plat
+  m_EditorClassIdentifier: Assembly-CSharp::AugmentData
+  augmentName: "\uBC94\uB78C\uD558\uB294 \uB9C8\uB098"
+  description: "\uCD5C\uB300 \uC2A4\uD0AC\uD3EC\uC778\uD2B8 +3, \uC2A4\uD0AC\uD3EC\uC778\uD2B8
+    \uBAA8\uB450 \uD68C\uBCF5"
+  icon: {fileID: 0}
+  tier: 2
+  stat_MaxHP: 0
+  stat_CurrentHP: 0
+  stat_MaxSP: 3
+  stat_CurrentSP: 9999
+  stat_InvincibleTime: 0
+  stat_MoveSpeed: 0
+  stat_MaxShootingForce: 0
+  stat_MinShootingForce: 0
+  stat_MaxChargeTime: 0
+  stat_ChargeDamage: 0
+  stat_BulletDamage: 0
+  stat_RateOfFire: 0
+  stat_BulletPerShot: 0

@@ -15,12 +15,12 @@ MonoBehaviour:
   maxHP: 10
   currentHP: 10
   maxSP: 5
-  currentSP: 5
+  currentSP: 0
   invincibleTime: 1
   moveSpeed: 5
-  maxShooingForce: 10
-  minShooingForce: 2
-  maxChargeTime: 0.5
+  maxShootingForce: 10
+  minShootingForce: 2
+  maxChargeTime: 1
   chargeDamage: 10
   damage: 10
   rateOfFire: 0.15

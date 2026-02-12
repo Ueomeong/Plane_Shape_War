@@ -22,8 +22,8 @@ public class Player_Move : MonoBehaviour
     public float maxAngleDegree = 50f;//충전중 방향전환의 한계치
     public float ShootingSpeed;//발사될 힘?가속의 크기
     public Boolean isCharging=false;//충전중인가
-    public float maxShooingForce => PlayerData.maxShooingForce;
-    public float minShooingForce =>PlayerData.minShooingForce;
+    public float maxShooingForce => PlayerData.maxShootingForce;
+    public float minShooingForce =>PlayerData.minShootingForce;
     public float maxChargeTime => PlayerData.maxChargeTime;
     public float currentChargeTime = 0.0f;
     public float ShootingTime = 0.0f;//감속을 받지 않고 날라가는 시간
