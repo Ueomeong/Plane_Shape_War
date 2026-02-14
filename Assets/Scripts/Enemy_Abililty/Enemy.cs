@@ -36,13 +36,14 @@ public class Enemy : MonoBehaviour
     protected Color HpColor;
     protected Color outlineColor;
     protected Color playerChasingColor;
-
+    [Header("Drop ITEMS")]
+    [SerializeField] protected float drop_EXP;
+    [SerializeField] protected float drop_Money;
+    [SerializeField] protected float drop_Items;
+    [Header("waiting?")]
     protected bool isWaiting;
     protected float currentWaittime;
 
-    [Header("Attack Player!")]//아직 미구현
-    [SerializeField] protected float attackCooldown;
-    protected float attackTime;
     public virtual void Awake()
     {
         spriteRender = GetComponentInChildren<SpriteRenderer>();
@@ -189,11 +190,41 @@ public class Enemy : MonoBehaviour
     {
         GameObject eff = GameManager.Instance.poolmanager.Get(2);
         GameManager.Instance.camerashaking.ShakeCamera(3f,0.15f);
+        DropLoot();
         if (eff != null)
         {
         eff.transform.position = transform.position;
         }
         gameObject.SetActive(false);
+    }
+
+    protected virtual void DropLoot()
+    {
+        for(int i=0; i<drop_Money;i++)
+        {
+            GameObject DropObj = GameManager.Instance.poolmanager.Get(12);
+            if(DropObj!=null)
+            {
+                DropObj.transform.position = transform.position;
+                if (DropObj.TryGetComponent<LootItem>(out var loot))
+                {
+                    // 가치는 1로 설정 (필요시 조절), spawnPosition은 현재 위치, 플레이어 트랜스폼 전달
+                    loot.Init(1, transform.position, playerTransform);
+                }
+            }
+        }
+        for (int i = 0; i < drop_EXP; i++)
+        {
+            GameObject DropObj = GameManager.Instance.poolmanager.Get(13);
+            if (DropObj != null)
+            {
+                DropObj.transform.position = transform.position;
+                if(DropObj.TryGetComponent<LootItem>(out var loot))
+                {
+                    loot.Init(1, transform.position, playerTransform);
+                }
+            }
+        }
     }
 
     public IEnumerator EnemyMozzi(Vector3 originalSize,Vector3 hitDir)

@@ -16,6 +16,9 @@ public class Triangle : Enemy
     private bool isDashing;//돌진 중 인가?
     private bool isCharging;//돌진을 위한 충전 중 인가?
 
+    [Header("Attack Player!")]//플레이어 무적시간 추가로 안쓸꺼임
+    [SerializeField] protected float attackCooldown;
+    protected float attackTime;
     protected override void OnEnable()
     {
         base.OnEnable();

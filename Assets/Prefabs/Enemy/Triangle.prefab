@@ -64,11 +64,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 136
   outlineSpriteRenderer: {fileID: 8321103821252898701}
-  attackCooldown: 0
+  drop_EXP: 3
+  drop_Money: 2
+  drop_Items: 0
   maxChargeTime: 1
   attackCoolTime: 1
   currentChargeTime: 0
   maxDashingTime: 3
+  attackCooldown: 0
 --- !u!50 &4556747187773892773
 Rigidbody2D:
   serializedVersion: 5

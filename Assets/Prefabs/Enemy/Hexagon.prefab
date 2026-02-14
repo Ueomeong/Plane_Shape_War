@@ -309,7 +309,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 136
   outlineSpriteRenderer: {fileID: 1026214844757727629}
-  attackCooldown: 0
+  drop_EXP: 5
+  drop_Money: 5
+  drop_Items: 0
   shieldRenderer: {fileID: 1601177363232218730}
   isShieldOn: 0
   maxShieldHP: 100

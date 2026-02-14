@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65e6045e9bf6a84f923ebaec105711b, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  maxHP: 10
-  currentHP: 10
+  maxHP: 5
+  currentHP: 0
   maxSP: 5
-  currentSP: 0
+  currentSP: 4
   invincibleTime: 1
   moveSpeed: 5
   maxShootingForce: 10

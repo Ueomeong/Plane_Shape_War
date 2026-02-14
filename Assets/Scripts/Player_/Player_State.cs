@@ -10,6 +10,7 @@ public class Player_State : MonoBehaviour
   
     private void Awake()
     {
+        gameObject.SetActive(true);
         PlayerData.ResetPlayerData();
         isInvincible = false;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -87,7 +88,14 @@ public class Player_State : MonoBehaviour
 
     private void Die()
     {
+        gameObject.SetActive(false);
+        GameObject eff = GameManager.Instance.poolmanager.Get(11);
+        GameManager.Instance.camerashaking.ShakeCamera(3f, 0.15f);
+        if (eff != null)
+        {
+            eff.transform.position = transform.position;
+        }
         Debug.Log("GameOver!");
-        GameManager.Instance.PauseGame();
+        //GameManager.Instance.PauseGame();
     }
 }

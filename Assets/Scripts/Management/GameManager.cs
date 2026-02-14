@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public int stage;//클리어한 스테이지
     public int money;//돈 보유량
+    public int exp;//경험치
+    public int level;//플레이어 레벨
     public int temporaryMoney;//저장했다가 게임 클리어시 이 값을 매개변수로 넣어 MoneyChage호출
     [Header("GamePlay Data")]
     public bool isLive { get; private set; } = true;

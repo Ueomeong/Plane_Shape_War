@@ -140,12 +140,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Square
   maxHP: 70
-  detectRange: 4
+  detectRange: 6
   AttackDamage: 0
   moveSpeed: 15
   moneyDrop: 0
   willToChase: 0
   reconRange: 10
+  isKnockbackable: 1
   currentHP: 0
   attackDamage: 0
   isChasingPlayer: 0
@@ -155,7 +156,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 136
   outlineSpriteRenderer: {fileID: 3920045868219446759}
-  attackCooldown: 0
+  drop_EXP: 2
+  drop_Money: 1
+  drop_Items: 0
 --- !u!58 &4540802537303761606
 CircleCollider2D:
   m_ObjectHideFlags: 0

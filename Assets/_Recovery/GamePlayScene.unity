@@ -3688,6 +3688,9 @@ MonoBehaviour:
   - {fileID: 2768765263029685287, guid: 324748b805268a64ab3a3b080195b785, type: 3}
   - {fileID: 6420628649001140882, guid: 9f27337d6d6c05746b198e324cdce80a, type: 3}
   - {fileID: 4840079796923635784, guid: 9568ec5a4d0640749b484474dd4b16a0, type: 3}
+  - {fileID: 8549661610081773149, guid: c5ba531422b812a499420466b4510faf, type: 3}
+  - {fileID: 6477207271750622401, guid: 88f59c0492392cb418c0a021b7d01249, type: 3}
+  - {fileID: 7799137924359676024, guid: 90a2e482c53acbc448859e25bf139397, type: 3}
 --- !u!4 &1311011528
 Transform:
   m_ObjectHideFlags: 0
@@ -4676,6 +4679,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   stage: 0
   money: 0
+  exp: 0
+  level: 0
   temporaryMoney: 0
   PauseButton: {fileID: 1125693279}
   PausePanel: {fileID: 1257565722}

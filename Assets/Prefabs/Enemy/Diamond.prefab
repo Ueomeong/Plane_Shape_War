@@ -402,7 +402,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 136
   outlineSpriteRenderer: {fileID: 509219401114866501}
-  attackCooldown: 0
+  drop_EXP: 2
+  drop_Money: 2
+  drop_Items: 0
   maxChargeTime: 1.5
   attackCoolTime: 1
   currentChargeTime: 0
