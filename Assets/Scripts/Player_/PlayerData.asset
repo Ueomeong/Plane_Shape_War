@@ -16,7 +16,7 @@ MonoBehaviour:
   currentHP: 0
   maxSP: 5
   currentSP: 4
-  invincibleTime: 1
+  invincibleTime: 0.8
   moveSpeed: 5
   maxShootingForce: 10
   minShootingForce: 2

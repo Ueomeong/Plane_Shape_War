@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     [Header("Game Data")]
@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public int temporaryMoney;//저장했다가 게임 클리어시 이 값을 매개변수로 넣어 MoneyChage호출
     [Header("GamePlay Data")]
     public bool isLive { get; private set; } = true;
+    public PlayerLevelData playerLevelData;
 
     [Header("UI")]
     public GameObject PauseButton;
@@ -24,8 +25,11 @@ public class GameManager : MonoBehaviour
     public HP_Manager hpManager;
     public CameraShaking camerashaking;
     public SP_Manager spManager;
+    [Header("Events")]
+    public System.Action<int> OnLevelUp;
     private void Awake()
     {
+        level = 0;
         if (Instance == null)
         {
             Instance = this;
@@ -56,6 +60,13 @@ public class GameManager : MonoBehaviour
         PausePanel.SetActive(true);
         PauseButton.SetActive(false);
     }
+    public void LevelUPPauseGame()
+    {
+        isLive = false;
+        Time.timeScale = 0;
+
+        PauseButton.SetActive(false);
+    }
     public void ResumeGame()
     {
         isLive = true;
@@ -64,7 +75,22 @@ public class GameManager : MonoBehaviour
         PauseButton.SetActive(true);
     }
 
-
+    //레벨업과 경험치
+    public void AddExp(int val)
+    {
+        exp += val;
+        if (playerLevelData.requiredExp[level]<exp)
+        {
+            exp -= playerLevelData.requiredExp[level];
+            LevelUp();
+        }
+    }
+    public void LevelUp()
+    {
+        level++;
+        OnLevelUp?.Invoke(level);
+        LevelUPPauseGame();//임시
+    }
 
     //데이터 저장과 불러오기
     public void StageClear()//스테이지 클리어시 호출

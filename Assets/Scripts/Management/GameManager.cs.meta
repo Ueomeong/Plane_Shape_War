@@ -1,2 +1,22 @@
 fileFormatVersion: 2
 guid: e2b2852028db1d34c87146b50e81408c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerLevelData: {fileID: 11400000, guid: adf1d351871d77b47a42ab9ffba754aa, type: 2}
+  - PauseButton: {instanceID: 0}
+  - PausePanel: {instanceID: 0}
+  - player_move: {instanceID: 0}
+  - player_state: {instanceID: 0}
+  - mousepointer: {instanceID: 0}
+  - poolmanager: {instanceID: 0}
+  - PlayerData: {fileID: 11400000, guid: 62fbb12b018bd8a4d9d7ca68e9915fd3, type: 2}
+  - hpManager: {instanceID: 0}
+  - camerashaking: {instanceID: 0}
+  - spManager: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
