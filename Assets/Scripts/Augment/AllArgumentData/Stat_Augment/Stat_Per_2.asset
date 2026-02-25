@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0bdcdfb61cacf14499d865462a4e277, type: 3}
+  m_Name: Stat_Per_2
+  m_EditorClassIdentifier: Assembly-CSharp::AugmentData
+  augmentName: "\uAD00\uD1B5\uD0C4 I"
+  description: "\uCD1D\uC54C\uC774 \uAD00\uD1B5 \uAC00\uB2A5\uD55C \uC801\uC758 \uC218
+    +1"
+  icon: {fileID: -495812728, guid: 9a19f01269f759140a6c8537eba61203, type: 3}
+  tier: 1
+  stat_MaxHP: 0
+  stat_CurrentHP: 0
+  stat_MaxSP: 0
+  stat_CurrentSP: 0
+  stat_InvincibleTime: 0
+  stat_MoveSpeed: 0
+  stat_MaxShootingForce: 0
+  stat_MinShootingForce: 0
+  stat_MaxChargeTime: 0
+  stat_ChargeDamage: 0
+  stat_BulletDamage: 0
+  stat_RateOfFire: 0
+  stat_BulletPerShot: 1

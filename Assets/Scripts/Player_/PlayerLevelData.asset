@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60493990ad988fe418dc93664860732f, type: 3}
   m_Name: PlayerLevelData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLevelData
-  requiredExp: 0a0000001e000000320000004600000064000000e8030000
+  requiredExp: 030000000a000000140000001e00000028000000e8030000e8030000e8030000

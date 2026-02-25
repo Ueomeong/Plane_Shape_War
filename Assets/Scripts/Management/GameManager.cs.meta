@@ -4,14 +4,15 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - playerLevelData: {fileID: 11400000, guid: adf1d351871d77b47a42ab9ffba754aa, type: 2}
+  - playerLevelData: {instanceID: 0}
   - PauseButton: {instanceID: 0}
   - PausePanel: {instanceID: 0}
+  - AugmentPanel: {instanceID: 0}
   - player_move: {instanceID: 0}
   - player_state: {instanceID: 0}
   - mousepointer: {instanceID: 0}
   - poolmanager: {instanceID: 0}
-  - PlayerData: {fileID: 11400000, guid: 62fbb12b018bd8a4d9d7ca68e9915fd3, type: 2}
+  - PlayerData: {instanceID: 0}
   - hpManager: {instanceID: 0}
   - camerashaking: {instanceID: 0}
   - spManager: {instanceID: 0}

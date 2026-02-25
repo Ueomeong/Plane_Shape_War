@@ -34,13 +34,16 @@ public class AugmentData : ScriptableObject
 
     [Header("Bullet Ability")]
     public float stat_BulletDamage;     // 총알 데미지
-    public float stat_RateOfFire;       // 연사 속도 (쿨타임 감소면 음수 입력, 속도 증가면 양수)
+    public float stat_RateOfFire;       // 연사 속도 %
     public int stat_BulletPerShot;    // 한 번에 발사되는 총알 수
+
+    [Header("Selected Before")]
+    public bool isNotMultiable;// 중복 선택 불가능한 증강인가?
+
 
     public virtual void ApplyAugment()
     {
         PlayerData pd = GameManager.Instance.PlayerData;
-
         // 1. HP & SP 적용
         pd.maxHP += stat_MaxHP;
         pd.currentHP += stat_CurrentHP;
@@ -61,7 +64,8 @@ public class AugmentData : ScriptableObject
 
         // 4. 사격(Bullet) 스탯 적용
         pd.damage += stat_BulletDamage; // PlayerData 변수명 확인 필요
-        pd.rateOfFire += stat_RateOfFire; // 쿨타임 방식이면 -0.1 처럼 음수를 넣어야 빨라짐
+        pd.Modifier_rateOfFire += stat_RateOfFire; // 추가 공속의 총합
+        pd.rateOfFire = pd.Base_rateOfFire / (1.0f + pd.Modifier_rateOfFire);
         pd.per += stat_BulletPerShot; // PlayerData에 변수가 있다면 주석 해제
 
         // 5. UI 및 매니저 갱신 (필수!)

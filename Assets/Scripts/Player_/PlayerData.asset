@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   maxHP: 5
-  currentHP: 0
+  currentHP: 5
   maxSP: 5
-  currentSP: 4
+  currentSP: 5
   invincibleTime: 0.8
   moveSpeed: 5
   maxShootingForce: 10
@@ -23,5 +23,7 @@ MonoBehaviour:
   maxChargeTime: 1
   chargeDamage: 10
   damage: 10
-  rateOfFire: 0.15
-  per: 2
+  Base_rateOfFire: 0.75
+  Modifier_rateOfFire: 0.3
+  rateOfFire: 0.5769231
+  per: 1

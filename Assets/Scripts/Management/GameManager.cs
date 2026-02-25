@@ -12,10 +12,12 @@ public class GameManager : MonoBehaviour
     [Header("GamePlay Data")]
     public bool isLive { get; private set; } = true;
     public PlayerLevelData playerLevelData;
-
+    private HashSet<string> acquiredAugments = new HashSet<string>();//획득한 증강 저장
     [Header("UI")]
     public GameObject PauseButton;
     public GameObject PausePanel;
+    public GameObject AugmentPanel;
+    public EXP_Slider expSlider;
     [Header("Scripts")]
     public Player_Move player_move;
     public Player_State player_state;
@@ -41,7 +43,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    //게임 정지, 레벨업, 재시작 *************************************************************************
     public void TogglePauseButton()
     {
         if (isLive)
@@ -66,6 +68,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
 
         PauseButton.SetActive(false);
+        AugmentPanel.SetActive(true);
     }
     public void ResumeGame()
     {
@@ -73,17 +76,27 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         PausePanel.SetActive(false);
         PauseButton.SetActive(true);
+        AugmentPanel.SetActive(false);
+        if (expSlider != null)
+        {
+            expSlider.SliderAdjust(exp, playerLevelData.requiredExp[level]);
+        }
     }
 
-    //레벨업과 경험치
+    //레벨업과 경험치*************************************************************************
     public void AddExp(int val)
     {
         exp += val;
-        if (playerLevelData.requiredExp[level]<exp)
+        if(expSlider!=null)
+        {
+            expSlider.SliderAdjust(exp, playerLevelData.requiredExp[level]);
+        }
+        if (playerLevelData.requiredExp[level]<=exp)
         {
             exp -= playerLevelData.requiredExp[level];
             LevelUp();
         }
+        
     }
     public void LevelUp()
     {
@@ -91,8 +104,28 @@ public class GameManager : MonoBehaviour
         OnLevelUp?.Invoke(level);
         LevelUPPauseGame();//임시
     }
+   
+    //증강 관리 (Set으로)*************************************************************************
 
-    //데이터 저장과 불러오기
+    public void AddAcquiredAugment(string augmentName)
+    {
+        if(!acquiredAugments.Contains(augmentName))
+        {
+            acquiredAugments.Add(augmentName);//획득한 증강 목록에 추가
+        }
+    }
+
+    public bool HasAcquired(string augmentName)
+    {
+        return acquiredAugments.Contains(augmentName);
+    }
+    
+    public void ResetAugments()
+    {
+        acquiredAugments.Clear();
+    }
+
+    //데이터 저장과 불러오기*************************************************************************
     public void StageClear()//스테이지 클리어시 호출
     {
         stage++;
