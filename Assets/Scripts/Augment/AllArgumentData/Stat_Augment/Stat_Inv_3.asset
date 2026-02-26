@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stat_Inv_3
   m_EditorClassIdentifier: Assembly-CSharp::AugmentData
   augmentName: "\uBE44\uC0C1 \uD0C8\uCD9C \uBA54\uB274\uC5BC III"
-  description: "\uBB34\uC801 \uC2DC\uAC04 +1 \uCD08, \uCD5C\uB300 \uCCB4\uB825 +1,
+  description: "\uBB34\uC801 \uC2DC\uAC04 +2\uCD08, \uCD5C\uB300 \uCCB4\uB825 +1,
     \uC774\uB3D9\uC18D\uB3C4 +0.5, \uD604\uC7AC \uCCB4\uB825 \uBAA8\uB450 \uD68C\uBCF5"
   icon: {fileID: -7316637591660174851, guid: 9a19f01269f759140a6c8537eba61203, type: 3}
   tier: 2
@@ -21,7 +21,7 @@ MonoBehaviour:
   stat_CurrentHP: 9999
   stat_MaxSP: 0
   stat_CurrentSP: 0
-  stat_InvincibleTime: 1
+  stat_InvincibleTime: 2
   stat_MoveSpeed: 0.5
   stat_MaxShootingForce: 0
   stat_MinShootingForce: 0
@@ -30,3 +30,6 @@ MonoBehaviour:
   stat_BulletDamage: 0
   stat_RateOfFire: 0
   stat_BulletPerShot: 0
+  stat_continuousFire: 0
+  stat_spread_Bullet: 0
+  isNotMultiable: 0

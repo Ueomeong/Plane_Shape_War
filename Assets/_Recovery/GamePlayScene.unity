@@ -1304,6 +1304,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d658505c4a21751408d44fbf87684b71, type: 2}
   - {fileID: 11400000, guid: 2b497acaf443d0342a1722f2b09951fb, type: 2}
   - {fileID: 11400000, guid: 2bfb1b6e0c7c02c46aa81cf98c41c300, type: 2}
+  - {fileID: 11400000, guid: fa8fcd230d440d641849893665266586, type: 2}
   Platinum_Augments:
   - {fileID: 11400000, guid: 560ee808315957b4495dddfb196cce83, type: 2}
   - {fileID: 11400000, guid: 335c2c26cb39fff46af2a6e2b9caa400, type: 2}
@@ -1312,6 +1313,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c2dc8830233758b48be5594a99021a3a, type: 2}
   - {fileID: 11400000, guid: dccb8ea7342df1d43aceb58c82387037, type: 2}
   - {fileID: 11400000, guid: 87b2366ef5481134fb8d8a2a835ba88c, type: 2}
+  - {fileID: 11400000, guid: f3980d3f487850048ad5f980417db4fe, type: 2}
   SilverProb: 30
   GoldProb: 40
   PlatProb: 30
@@ -1405,7 +1407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a991e4af206424b46aa8d65bedcbfc32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SP_Manager
-  PlayerData: {fileID: 11400000, guid: 62fbb12b018bd8a4d9d7ca68e9915fd3, type: 2}
   SPPrefab: {fileID: 4593216488235567251, guid: 930a1fe2df4b7894486d25027c617be9, type: 3}
   SPContainer: {fileID: 613068489}
 --- !u!1 &619394800
@@ -6398,7 +6399,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada81d6015fb2d8409117dc1ed7a16ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HP_Manager
-  PlayerData: {fileID: 11400000, guid: 62fbb12b018bd8a4d9d7ca68e9915fd3, type: 2}
   HPPrefab: {fileID: 4593216488235567251, guid: 8111d02064c4e724f9c888d73d15814e, type: 3}
   HPContainer: {fileID: 1828159712}
 --- !u!1 &1837588420
@@ -6713,7 +6713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed2f98100cb65a4eaaa9c04e03c5321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_Ability
-  PlayerData: {fileID: 11400000, guid: 62fbb12b018bd8a4d9d7ca68e9915fd3, type: 2}
   moveable: 1
   coolTime: 0
 --- !u!114 &1993010329
@@ -6728,7 +6727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7acd9d8affea79146bd861fbaa80a754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_State
-  PlayerData: {fileID: 11400000, guid: 62fbb12b018bd8a4d9d7ca68e9915fd3, type: 2}
   isInvincible: 0
   spriteRenderer: {fileID: 0}
 --- !u!1 &2038531833
@@ -6994,6 +6992,8 @@ MonoBehaviour:
   level: 0
   temporaryMoney: 0
   playerLevelData: {fileID: 11400000, guid: adf1d351871d77b47a42ab9ffba754aa, type: 2}
+  PlayerData: {fileID: 11400000, guid: 62fbb12b018bd8a4d9d7ca68e9915fd3, type: 2}
+  runtimePlayerData: {fileID: 0}
   PauseButton: {fileID: 1125693279}
   PausePanel: {fileID: 1257565722}
   AugmentPanel: {fileID: 533406854}
@@ -7002,7 +7002,6 @@ MonoBehaviour:
   player_state: {fileID: 1993010329}
   mousepointer: {fileID: 1734903032}
   poolmanager: {fileID: 1311011527}
-  PlayerData: {fileID: 11400000, guid: 62fbb12b018bd8a4d9d7ca68e9915fd3, type: 2}
   hpManager: {fileID: 1828159715}
   camerashaking: {fileID: 186219818}
   spManager: {fileID: 613068492}

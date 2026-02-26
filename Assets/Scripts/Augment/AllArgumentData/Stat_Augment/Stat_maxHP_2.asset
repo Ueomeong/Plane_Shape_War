@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Stat_maxHP_2
   m_EditorClassIdentifier: Assembly-CSharp::AugmentData
   augmentName: "\uCCB4\uB825 \uC5C5\uADF8\uB808\uC774\uB4DC II"
-  description: "\uCD5C\uB300 \uCCB4\uB825 +2, \uD604\uC7AC \uCCB4\uB825 +2"
+  description: "\uCD5C\uB300 \uCCB4\uB825 +2, \uCCB4\uB825 \uBAA8\uB450 \uD68C\uBCF5"
   icon: {fileID: -7316637591660174851, guid: 9a19f01269f759140a6c8537eba61203, type: 3}
   tier: 1
   stat_MaxHP: 2
-  stat_CurrentHP: 2
+  stat_CurrentHP: 9999
   stat_MaxSP: 0
   stat_CurrentSP: 0
   stat_InvincibleTime: 0
@@ -29,3 +29,6 @@ MonoBehaviour:
   stat_BulletDamage: 0
   stat_RateOfFire: 0
   stat_BulletPerShot: 0
+  stat_continuousFire: 0
+  stat_spread_Bullet: 0
+  isNotMultiable: 0

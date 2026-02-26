@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 public class SP_Manager : MonoBehaviour
 {
-    public PlayerData PlayerData;
+    private PlayerData PlayerData;
     public GameObject SPPrefab;
     public Transform SPContainer;
     private Color SPColor;
@@ -12,10 +12,14 @@ public class SP_Manager : MonoBehaviour
     private List<GameObject> SP = new List<GameObject>();
     private void Start()
     {
+        if (GameManager.Instance != null && GameManager.Instance.runtimePlayerData != null)
+        {
+            PlayerData = GameManager.Instance.runtimePlayerData;
+        }
         SPColor = new Color(0f, 124/255f, 255f);
         SPColorDark = new Color(0 / 255f, 47 / 255f, 77 / 255f);
         InitSP();
-    }
+}
 
     public void InitSP()
     {

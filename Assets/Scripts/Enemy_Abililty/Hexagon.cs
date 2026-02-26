@@ -12,6 +12,7 @@ public class Hexagon : Enemy
     private Coroutine shieldEffectCoroutine;
     protected override void OnEnable()
     {
+        HpColor = Color.black;
         currentHP = maxHP;
         attackDamage = AttackDamage;
         isChasingPlayer = false;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public PlayerData PlayerData;
+    private PlayerData PlayerData => GameManager.Instance.runtimePlayerData;
     private Transform bullet_transform;
     private Transform mousepointer_transform;
     private Rigidbody2D rigid;
@@ -16,16 +16,18 @@ public class Bullet : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
     }
+
+
     private void OnEnable()
     {
         if (GameManager.Instance == null || GameManager.Instance.player_move == null) return;
-
+        
         bullet_transform = GetComponent<Transform>();
         mousepointer_transform = GameManager.Instance.player_move.GetComponent<Transform>();
 
         bullet_transform.position = GameManager.Instance.mousepointer.transform.position;
         bullet_transform.rotation = GameManager.Instance.mousepointer.transform.rotation;
-
+        
         rigid.linearVelocity = transform.up * speed;
         per = totalPer;
         

@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AugmentData
   augmentName: "\uCCB4\uB825 \uC5C5\uADF8\uB808\uC774\uB4DC III"
   description: "\uCCB4\uB825 \uBAA8\uB450 \uD68C\uBCF5, \uCD5C\uB300 \uCCB4\uB825
-    +3, \uC774\uB3D9\uC18D\uB3C4 +0.5"
+    +4, \uC774\uB3D9\uC18D\uB3C4 +1"
   icon: {fileID: -7316637591660174851, guid: 9a19f01269f759140a6c8537eba61203, type: 3}
   tier: 2
-  stat_MaxHP: 3
+  stat_MaxHP: 4
   stat_CurrentHP: 9999
   stat_MaxSP: 0
   stat_CurrentSP: 0
   stat_InvincibleTime: 0
-  stat_MoveSpeed: 0.5
+  stat_MoveSpeed: 1
   stat_MaxShootingForce: 0
   stat_MinShootingForce: 0
   stat_MaxChargeTime: 0
@@ -30,3 +30,6 @@ MonoBehaviour:
   stat_BulletDamage: 0
   stat_RateOfFire: 0
   stat_BulletPerShot: 0
+  stat_continuousFire: 0
+  stat_spread_Bullet: 0
+  isNotMultiable: 0

@@ -2,14 +2,18 @@ using UnityEngine;
 
 public class Player_State : MonoBehaviour
 {
-    public PlayerData PlayerData;
+    private PlayerData PlayerData;
     public float InvincibleTime => PlayerData.invincibleTime;
     private float currentInvincibleTime;
     public bool isInvincible;
     public SpriteRenderer spriteRenderer;
   
-    private void Awake()
+    private void Start()
     {
+        if (GameManager.Instance != null && GameManager.Instance.runtimePlayerData != null)
+        {
+            PlayerData = GameManager.Instance.runtimePlayerData;
+        }
         gameObject.SetActive(true);
         PlayerData.ResetPlayerData();
         isInvincible = false;

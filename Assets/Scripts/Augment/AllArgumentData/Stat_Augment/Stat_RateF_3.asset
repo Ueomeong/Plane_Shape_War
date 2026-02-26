@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stat_RateF_3
   m_EditorClassIdentifier: Assembly-CSharp::AugmentData
   augmentName: "\uC5F0\uC0AC II"
-  description: "\uACF5\uACA9\uC18D\uB3C4 +60%"
+  description: "\uACF5\uACA9\uC18D\uB3C4 +80%"
   icon: {fileID: -495812728, guid: 9a19f01269f759140a6c8537eba61203, type: 3}
   tier: 2
   stat_MaxHP: 0
@@ -27,5 +27,8 @@ MonoBehaviour:
   stat_MaxChargeTime: 0
   stat_ChargeDamage: 0
   stat_BulletDamage: 0
-  stat_RateOfFire: 0.6
+  stat_RateOfFire: 0.8
   stat_BulletPerShot: 0
+  stat_continuousFire: 0
+  stat_spread_Bullet: 0
+  isNotMultiable: 0

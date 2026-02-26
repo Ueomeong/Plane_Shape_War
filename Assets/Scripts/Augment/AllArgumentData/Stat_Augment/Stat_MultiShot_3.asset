@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0bdcdfb61cacf14499d865462a4e277, type: 3}
-  m_Name: Stat_RateF_2
-  m_EditorClassIdentifier: Assembly-CSharp::AugmentData
-  augmentName: "\uC5F0\uC0AC II"
-  description: "\uACF5\uACA9\uC18D\uB3C4 +50%"
+  m_Script: {fileID: 11500000, guid: ca4be113208583b4c925312743fa49fd, type: 3}
+  m_Name: Stat_MultiShot_3
+  m_EditorClassIdentifier: Assembly-CSharp::StatArgumentData
+  augmentName: "\uBA40\uD2F0\uC0F7 II"
+  description: "\uCD1D\uC54C \uBC1C\uC0AC \uC2DC \uCD94\uAC00\uB85C \uB450\uBC88
+    \uB354 \uBC1C\uC0AC\uD569\uB2C8\uB2E4.(\uC911\uBCF5 \uD68D\uB4DD \uBD88\uAC00)"
   icon: {fileID: -495812728, guid: 9a19f01269f759140a6c8537eba61203, type: 3}
-  tier: 1
+  tier: 2
   stat_MaxHP: 0
   stat_CurrentHP: 0
   stat_MaxSP: 0
@@ -27,8 +28,8 @@ MonoBehaviour:
   stat_MaxChargeTime: 0
   stat_ChargeDamage: 0
   stat_BulletDamage: 0
-  stat_RateOfFire: 0.5
+  stat_RateOfFire: 0
   stat_BulletPerShot: 0
-  stat_continuousFire: 0
+  stat_continuousFire: 2
   stat_spread_Bullet: 0
-  isNotMultiable: 0
+  isNotMultiable: 1

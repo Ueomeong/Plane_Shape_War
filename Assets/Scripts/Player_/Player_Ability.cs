@@ -1,12 +1,19 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using System.Collections;
 public class Player_Ability : MonoBehaviour
 {
-    public PlayerData PlayerData;
+    private PlayerData PlayerData;
     public bool moveable;
     public float rateOfFire => PlayerData.rateOfFire;
     public float coolTime=0f;
+    private void Start()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.runtimePlayerData != null)
+        {
+            PlayerData = GameManager.Instance.runtimePlayerData;
+        }
+    }
     void Update()
     {
         if (Keyboard.current.escapeKey.wasPressedThisFrame || Keyboard.current.pKey.wasPressedThisFrame)
@@ -17,7 +24,7 @@ public class Player_Ability : MonoBehaviour
         moveable = GameManager.Instance.player_move.isCharging;
         if (Mouse.current.leftButton.isPressed && !moveable && coolTime<=0f) 
         {
-            shoot(); 
+            StartCoroutine(shoot());
         }
         if(Keyboard.current.tKey.wasPressedThisFrame)
         {
@@ -59,9 +66,17 @@ public class Player_Ability : MonoBehaviour
         }
     }
 
-    void shoot()
+
+    IEnumerator shoot()
     {
-        coolTime=rateOfFire;
-        GameManager.Instance.poolmanager.Get(0);
+        int numberOfBullet=0;//ÃÊÅº
+        int maxNumberOfBullet=PlayerData.spread_Bullet;
+        coolTime = rateOfFire;
+        for(int i=0; i < PlayerData.continuousFire; i++)//¿¬¼Ó ¹ß»ç ÃÑ¾Ë °³¼ö
+        {
+            GameObject ShootedBullet = GameManager.Instance.poolmanager.Get(0);
+            yield return new WaitForSeconds(0.05f);
+        }
+        yield return null;
     }
 }

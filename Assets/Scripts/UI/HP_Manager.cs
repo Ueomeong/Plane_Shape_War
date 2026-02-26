@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 public class HP_Manager : MonoBehaviour
 {
-    public PlayerData PlayerData;
+    private PlayerData PlayerData;
     public GameObject HPPrefab;
     public Transform HPContainer;
     private Color HPColor;
@@ -14,6 +14,10 @@ public class HP_Manager : MonoBehaviour
     {
         HPColor = new Color(190/255f, 15/255f, 0f);
         HPColorDark = new Color(37 / 255f, 37 / 255f, 37 / 255f);
+        if (GameManager.Instance != null && GameManager.Instance.runtimePlayerData != null)
+        {
+            PlayerData = GameManager.Instance.runtimePlayerData;
+        }
         InitHP();
     }
 

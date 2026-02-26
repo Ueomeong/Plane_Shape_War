@@ -22,8 +22,10 @@ MonoBehaviour:
   minShootingForce: 2
   maxChargeTime: 1
   chargeDamage: 10
-  damage: 10
+  damage: 15
   Base_rateOfFire: 0.75
-  Modifier_rateOfFire: 0.3
-  rateOfFire: 0.5769231
+  Modifier_rateOfFire: 0
+  rateOfFire: 0.75
   per: 1
+  continuousFire: 1
+  spread_Bullet: 1

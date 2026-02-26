@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stat_DMG_3
   m_EditorClassIdentifier: Assembly-CSharp::AugmentData
   augmentName: "\uACF5\uACA9\uB825 \uC5C5\uADF8\uB808\uC774\uB4DC III"
-  description: "\uAE30\uBCF8 \uACF5\uACA9\uB825 +2"
+  description: "\uAE30\uBCF8 \uACF5\uACA9\uB825 +8"
   icon: {fileID: -495812728, guid: 9a19f01269f759140a6c8537eba61203, type: 3}
   tier: 2
   stat_MaxHP: 0
@@ -25,7 +25,10 @@ MonoBehaviour:
   stat_MaxShootingForce: 0
   stat_MinShootingForce: 0
   stat_MaxChargeTime: 0
-  stat_ChargeDamage: 2
-  stat_BulletDamage: 2
+  stat_ChargeDamage: 8
+  stat_BulletDamage: 8
   stat_RateOfFire: 0
   stat_BulletPerShot: 0
+  stat_continuousFire: 0
+  stat_spread_Bullet: 0
+  isNotMultiable: 0

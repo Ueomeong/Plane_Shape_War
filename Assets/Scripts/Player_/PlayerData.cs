@@ -23,6 +23,8 @@ public class PlayerData : ScriptableObject
     public float Modifier_rateOfFire;//추가된 공격속도의 총 합 //1이면 공속 2배
     public float rateOfFire;//실제 적용되는 공격속도
     public int per;
+    public int continuousFire;//연속 발사하는 총알의 개수
+    public int spread_Bullet;//총알을 동시에 여러개 발사하는 개수(약 90도 각도로 흩뿌를것?)
     public void ResetPlayerData()
     {
         currentHP = maxHP;

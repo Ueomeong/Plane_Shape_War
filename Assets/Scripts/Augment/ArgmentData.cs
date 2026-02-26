@@ -35,15 +35,16 @@ public class AugmentData : ScriptableObject
     [Header("Bullet Ability")]
     public float stat_BulletDamage;     // 총알 데미지
     public float stat_RateOfFire;       // 연사 속도 %
-    public int stat_BulletPerShot;    // 한 번에 발사되는 총알 수
-
+    public int stat_BulletPerShot;    // 총알이 뚫고 지나갈 수 있는 적의 수
+    public int stat_continuousFire; //한번 발사에 날아가는 총알의 수
+    public int stat_spread_Bullet; //발사시 퍼지는 총알의 갯수
     [Header("Selected Before")]
     public bool isNotMultiable;// 중복 선택 불가능한 증강인가?
 
 
     public virtual void ApplyAugment()
     {
-        PlayerData pd = GameManager.Instance.PlayerData;
+        PlayerData pd = GameManager.Instance.runtimePlayerData;
         // 1. HP & SP 적용
         pd.maxHP += stat_MaxHP;
         pd.currentHP += stat_CurrentHP;
@@ -68,6 +69,8 @@ public class AugmentData : ScriptableObject
         pd.rateOfFire = pd.Base_rateOfFire / (1.0f + pd.Modifier_rateOfFire);
         pd.per += stat_BulletPerShot; // PlayerData에 변수가 있다면 주석 해제
 
+        pd.continuousFire += stat_continuousFire;
+        pd.spread_Bullet += stat_spread_Bullet;
         // 5. UI 및 매니저 갱신 (필수!)
         // HP나 SP 최대치가 변했으니 UI를 다시 그려줍니다.
         if (stat_MaxHP != 0 || stat_CurrentHP != 0)

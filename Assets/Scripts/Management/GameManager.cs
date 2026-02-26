@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header("Game Data")]
@@ -13,6 +14,8 @@ public class GameManager : MonoBehaviour
     public bool isLive { get; private set; } = true;
     public PlayerLevelData playerLevelData;
     private HashSet<string> acquiredAugments = new HashSet<string>();//획득한 증강 저장
+    public PlayerData PlayerData;//원본
+    public PlayerData runtimePlayerData;//복사본
     [Header("UI")]
     public GameObject PauseButton;
     public GameObject PausePanel;
@@ -23,7 +26,6 @@ public class GameManager : MonoBehaviour
     public Player_State player_state;
     public mousePointer mousepointer;
     public PoolManager poolmanager;
-    public PlayerData PlayerData;
     public HP_Manager hpManager;
     public CameraShaking camerashaking;
     public SP_Manager spManager;
@@ -42,7 +44,49 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        StartStage(1);//임시
     }
+    //스테이지 시작 로직*************************************************************************
+    public void StartStage(int stageNum)
+    {
+        // 1. 원본 데이터를 복제하여 "이번 판"용 데이터를 만듭니다.
+        // 이렇게 하면 이전 판의 데이터는 사라지고, 깔끔한 새 상태로 시작합니다.
+        runtimePlayerData = Instantiate(PlayerData);
+
+        // 2. 증강 목록 초기화
+        acquiredAugments.Clear();
+
+        // 3. 스테이지 설정
+        //currentStageIndex = stageNum;
+
+        // 4. 첫 번째 라운드 씬 로드 (씬 이름은 프로젝트에 맞게 관리)
+        //SceneManager.LoadScene($"Stage{stageNum}_Round1");
+
+        // 5. 게임 상태 재개
+        ResumeGame();
+    }
+    /*
+    public void NextRound(string nextSceneName)
+    {
+        // runtimePlayerData는 GameManager가 들고 있으므로
+        // 씬이 바뀌어도 체력, 증강, 공격력이 그대로 유지됩니다.
+        SceneManager.LoadScene(nextSceneName);
+    }
+    public void EndStage(bool isWin)
+    {
+        if(isWin)
+        {
+            // 보상 지급 등 로직
+            StageClear();
+        }
+        
+        // 스테이지 선택 화면으로 돌아가기
+        SceneManager.LoadScene("StageSelectScene");
+        
+        // 주의: 여기서 runtimePlayerData를 굳이 null로 만들 필요는 없지만,
+        // 다음번 StartStage()가 호출될 때 어차피 덮어씌워지므로 초기화됩니다.
+    }
+     */
     //게임 정지, 레벨업, 재시작 *************************************************************************
     public void TogglePauseButton()
     {

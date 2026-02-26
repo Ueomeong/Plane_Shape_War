@@ -38,6 +38,10 @@ public class Player_Move : MonoBehaviour
 
     private void Start()
     {
+        if (GameManager.Instance != null && GameManager.Instance.runtimePlayerData != null)
+        {
+            PlayerData = GameManager.Instance.runtimePlayerData;
+        }
         rigid = GetComponent<Rigidbody2D>();
         Player_transform = GetComponent<Transform>();//¹Ì»ç¿ë
         Player_renderer =GetComponentInChildren<SpriteRenderer>();

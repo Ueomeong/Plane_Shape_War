@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Stat_maxSp_3
   m_EditorClassIdentifier: Assembly-CSharp::AugmentData
   augmentName: "\uBC94\uB78C III"
-  description: "\uCD5C\uB300 \uC2A4\uD0AC\uD3EC\uC778\uD2B8 +3, \uC2A4\uD0AC\uD3EC\uC778\uD2B8
+  description: "\uCD5C\uB300 \uC2A4\uD0AC\uD3EC\uC778\uD2B8 +4, \uC2A4\uD0AC\uD3EC\uC778\uD2B8
     \uBAA8\uB450 \uD68C\uBCF5"
   icon: {fileID: -2001890489, guid: 9a19f01269f759140a6c8537eba61203, type: 3}
   tier: 2
   stat_MaxHP: 0
   stat_CurrentHP: 0
-  stat_MaxSP: 3
+  stat_MaxSP: 4
   stat_CurrentSP: 9999
   stat_InvincibleTime: 0
   stat_MoveSpeed: 0
@@ -30,3 +30,6 @@ MonoBehaviour:
   stat_BulletDamage: 0
   stat_RateOfFire: 0
   stat_BulletPerShot: 0
+  stat_continuousFire: 0
+  stat_spread_Bullet: 0
+  isNotMultiable: 0
