@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public SP_Manager spManager;
     [Header("Events")]
     public System.Action<int> OnLevelUp;
+    //[Header("Scenes")]
+
     private void Awake()
     {
         level = 0;
