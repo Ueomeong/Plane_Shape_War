@@ -75,12 +75,12 @@ public class AugmentData : ScriptableObject
         // HP나 SP 최대치가 변했으니 UI를 다시 그려줍니다.
         if (stat_MaxHP != 0 || stat_CurrentHP != 0)
         {
-            GameManager.Instance.hpManager.InitHP();
+            InGameManager.Instance.hpManager.InitHP();
         }
 
         if (stat_MaxSP != 0 || stat_CurrentSP != 0)
         {
-            GameManager.Instance.spManager.InitSP();
+            InGameManager.Instance.spManager.InitSP();
         }
     }
 }

@@ -16,7 +16,7 @@ public class MainMenuPanel : MonoBehaviour
     {
         while (sr.color.a>0) {
             Color c= sr.color;
-            c.a=c.a-(0.3f)*Time.deltaTime;
+            c.a=c.a-(0.05f)*Time.deltaTime;
             sr.color= c;
             yield return new WaitForFixedUpdate();
         }

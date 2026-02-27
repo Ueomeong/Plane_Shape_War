@@ -62,7 +62,7 @@ public class Hexagon : Enemy
                 }
 
                 // 파괴 이펙트
-                GameObject eff = GameManager.Instance.poolmanager.Get(3);
+                GameObject eff = InGameManager.Instance.poolmanager.Get(3);
                 if (eff != null) eff.transform.position = transform.position;
             }
             else
@@ -76,7 +76,7 @@ public class Hexagon : Enemy
                
         }
         HpColor = Color.Lerp(Color.white, Color.black, currentHP / maxHP);
-        GameManager.Instance.camerashaking.ShakeCamera(0.7f, 0.1f);
+        InGameManager.Instance.camerashaking.ShakeCamera(0.7f, 0.1f);
         if (gameObject.activeSelf && !isShieldOn)//총알을 맞았을때, 맞은 방향으로 살짝 수축하게 해보자, 쉴드가 없어야함!
         {
             StartCoroutine(EnemyMozzi(originalScale, hitDirection));

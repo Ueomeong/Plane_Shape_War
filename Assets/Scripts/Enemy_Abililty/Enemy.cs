@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour
     }
     protected virtual void FixedUpdate()//오버라이딩 가능 함수 이동 제어
     {
-        if (!GameManager.Instance.isLive) { return; }
+        if (!InGameManager.Instance.isLive) { return; }
         DetectPlayer();
         outlineSpriteRenderer.color = Color.Lerp(outlineColor,playerChasingColor,willToChase/3);
         if(isChasingPlayer)
@@ -173,7 +173,7 @@ public class Enemy : MonoBehaviour
         //
         currentHP -= damage;
         HpColor = Color.Lerp(Color.white, Color.black, currentHP / maxHP);
-        GameManager.Instance.camerashaking.ShakeCamera(0.7f, 0.1f);
+        InGameManager.Instance.camerashaking.ShakeCamera(0.7f, 0.1f);
         if (gameObject.activeSelf)//총알을 맞았을때, 맞은 방향으로 살짝 수축하게 해보자
         {
             StartCoroutine(EnemyMozzi(originalScale, hitDirection));
@@ -188,8 +188,8 @@ public class Enemy : MonoBehaviour
 
     public virtual void Die()//죽을때 자폭하는 기능을 넣을 수도 있기에 오버라이딩 가능으로 선언함
     {
-        GameObject eff = GameManager.Instance.poolmanager.Get(2);
-        GameManager.Instance.camerashaking.ShakeCamera(3f,0.15f);
+        GameObject eff = InGameManager.Instance.poolmanager.Get(2);
+        InGameManager.Instance.camerashaking.ShakeCamera(3f,0.15f);
         DropLoot();
         if (eff != null)
         {
@@ -202,7 +202,7 @@ public class Enemy : MonoBehaviour
     {
         for(int i=0; i<drop_Money;i++)
         {
-            GameObject DropObj = GameManager.Instance.poolmanager.Get(12);
+            GameObject DropObj = InGameManager.Instance.poolmanager.Get(12);
             if(DropObj!=null)
             {
                 DropObj.transform.position = transform.position;
@@ -215,7 +215,7 @@ public class Enemy : MonoBehaviour
         }
         for (int i = 0; i < drop_EXP; i++)
         {
-            GameObject DropObj = GameManager.Instance.poolmanager.Get(13);
+            GameObject DropObj = InGameManager.Instance.poolmanager.Get(13);
             if (DropObj != null)
             {
                 DropObj.transform.position = transform.position;
@@ -283,7 +283,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.player_state.TakeDamage(1);
+            InGameManager.Instance.player_state.TakeDamage(1);
 
             // (선택 사항) 플레이어를 밀어내는 물리적 연출을 더하고 싶다면
             Vector2 pushDirection = (collision.transform.position - transform.position).normalized;

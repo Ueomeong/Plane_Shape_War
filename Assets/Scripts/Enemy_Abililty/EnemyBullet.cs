@@ -34,7 +34,7 @@ public class EnemyBullet : MonoBehaviour
         if (collision.CompareTag("Enemy")| collision.CompareTag("Ignore")) return;
         if (pixelHitEffect != null)
         {
-            GameObject effectHit = GameManager.Instance.poolmanager.Get(10);//√—æÀ ¿Ã∆Â∆Æ
+            GameObject effectHit = InGameManager.Instance.poolmanager.Get(10);//√—æÀ ¿Ã∆Â∆Æ
             if (effectHit != null)
             {
                 Vector2 hitPoint = collision.ClosestPoint(transform.position);
@@ -44,7 +44,7 @@ public class EnemyBullet : MonoBehaviour
         }
         if (collision.CompareTag("Player"))
         {
-            GameManager.Instance.player_state.TakeDamage(1);
+            InGameManager.Instance.player_state.TakeDamage(1);
 
         }
         rigid.linearVelocity = Vector2.zero;

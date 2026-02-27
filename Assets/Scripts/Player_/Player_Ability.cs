@@ -18,46 +18,46 @@ public class Player_Ability : MonoBehaviour
     {
         if (Keyboard.current.escapeKey.wasPressedThisFrame || Keyboard.current.pKey.wasPressedThisFrame)
         {
-            GameManager.Instance.TogglePauseButton();
+            InGameManager.Instance.TogglePauseButton();
         }
-        if (!GameManager.Instance.isLive) { return; }
-        moveable = GameManager.Instance.player_move.isCharging;
+        if (!InGameManager.Instance.isLive) { return; }
+        moveable = InGameManager.Instance.player_move.isCharging;
         if (Mouse.current.leftButton.isPressed && !moveable && coolTime<=0f) 
         {
             StartCoroutine(shoot());
         }
         if(Keyboard.current.tKey.wasPressedThisFrame)
         {
-            GameManager.Instance.poolmanager.Get(6);
+            InGameManager.Instance.poolmanager.Get(6);
         }
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
-            GameManager.Instance.poolmanager.Get(7);
+            InGameManager.Instance.poolmanager.Get(7);
         }
         if (Keyboard.current.yKey.wasPressedThisFrame)
         {
-            GameManager.Instance.poolmanager.Get(8);
+            InGameManager.Instance.poolmanager.Get(8);
         }
         if (Keyboard.current.uKey.wasPressedThisFrame)
         {
-            GameManager.Instance.poolmanager.Get(5);
+            InGameManager.Instance.poolmanager.Get(5);
         }
         if (Keyboard.current.xKey.wasPressedThisFrame)
         {
-            GameManager.Instance.player_state.TakeDamage(1);
+            InGameManager.Instance.player_state.TakeDamage(1);
         }
         if (Keyboard.current.zKey.wasPressedThisFrame)
         {
-            GameManager.Instance.player_state.Heal(1);
+            InGameManager.Instance.player_state.Heal(1);
         }
 
         if (Keyboard.current.nKey.wasPressedThisFrame)
         {
-            GameManager.Instance.player_state.UseSP(1);
+            InGameManager.Instance.player_state.UseSP(1);
         }
         if (Keyboard.current.mKey.wasPressedThisFrame)
         {
-            GameManager.Instance.player_state.GetSP(1);
+            InGameManager.Instance.player_state.GetSP(1);
         }
 
         if (coolTime >= 0f)
@@ -74,7 +74,7 @@ public class Player_Ability : MonoBehaviour
         coolTime = rateOfFire;
         for(int i=0; i < PlayerData.continuousFire; i++)//연속 발사 총알 개수
         {
-            GameObject ShootedBullet = GameManager.Instance.poolmanager.Get(0);
+            GameObject ShootedBullet = InGameManager.Instance.poolmanager.Get(0);
             yield return new WaitForSeconds(0.05f);
         }
         yield return null;

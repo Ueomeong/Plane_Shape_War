@@ -20,13 +20,13 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        if (GameManager.Instance == null || GameManager.Instance.player_move == null) return;
+        if (InGameManager.Instance == null || InGameManager.Instance.player_move == null) return;
         
         bullet_transform = GetComponent<Transform>();
-        mousepointer_transform = GameManager.Instance.player_move.GetComponent<Transform>();
+        mousepointer_transform = InGameManager.Instance.player_move.GetComponent<Transform>();
 
-        bullet_transform.position = GameManager.Instance.mousepointer.transform.position;
-        bullet_transform.rotation = GameManager.Instance.mousepointer.transform.rotation;
+        bullet_transform.position = InGameManager.Instance.mousepointer.transform.position;
+        bullet_transform.rotation = InGameManager.Instance.mousepointer.transform.rotation;
         
         rigid.linearVelocity = transform.up * speed;
         per = totalPer;
@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
         if (collision.CompareTag("Ignore")) return;
         if(pixelHitEffect != null)
         {
-            GameObject effectHit = GameManager.Instance.poolmanager.Get(1);//√—æÀ ¿Ã∆Â∆Æ
+            GameObject effectHit = InGameManager.Instance.poolmanager.Get(1);//√—æÀ ¿Ã∆Â∆Æ
             if(effectHit != null)
             {
                 Vector2 hitPoint = collision.ClosestPoint(transform.position);

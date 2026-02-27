@@ -4,18 +4,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header("Game Data")]
-    public static GameManager Instance;
+    public static GameManager Instance;//게임 영구적으로 남는 데이터 관리
     public int stage;//클리어한 스테이지
     public int money;//돈 보유량
-    public int exp;//경험치
-    public int level;//플레이어 레벨
     public int temporaryMoney;//저장했다가 게임 클리어시 이 값을 매개변수로 넣어 MoneyChage호출
     [Header("GamePlay Data")]
-    public bool isLive { get; private set; } = true;
-    public PlayerLevelData playerLevelData;
     private HashSet<string> acquiredAugments = new HashSet<string>();//획득한 증강 저장
     public PlayerData PlayerData;//원본
     public PlayerData runtimePlayerData;//복사본
+    /*
     [Header("UI")]
     public GameObject PauseButton;
     public GameObject PausePanel;
@@ -30,12 +27,11 @@ public class GameManager : MonoBehaviour
     public CameraShaking camerashaking;
     public SP_Manager spManager;
     [Header("Events")]
-    public System.Action<int> OnLevelUp;
+    public System.Action<int> OnLevelUp;*/
     //[Header("Scenes")]
 
     private void Awake()
     {
-        level = 0;
         if (Instance == null)
         {
             Instance = this;
@@ -65,7 +61,10 @@ public class GameManager : MonoBehaviour
         //SceneManager.LoadScene($"Stage{stageNum}_Round1");
 
         // 5. 게임 상태 재개
-        ResumeGame();
+        if (InGameManager.Instance != null)
+        {
+            InGameManager.Instance.ResumeGame();
+        }
     }
     /*
     public void NextRound(string nextSceneName)
@@ -89,68 +88,6 @@ public class GameManager : MonoBehaviour
         // 다음번 StartStage()가 호출될 때 어차피 덮어씌워지므로 초기화됩니다.
     }
      */
-    //게임 정지, 레벨업, 재시작 *************************************************************************
-    public void TogglePauseButton()
-    {
-        if (isLive)
-        {
-            PauseGame();
-        }
-        else 
-        { 
-            ResumeGame();
-        }
-    }
-    public void PauseGame()
-    {
-        isLive = false;
-        Time.timeScale = 0;
-        PausePanel.SetActive(true);
-        PauseButton.SetActive(false);
-    }
-    public void LevelUPPauseGame()
-    {
-        isLive = false;
-        Time.timeScale = 0;
-
-        PauseButton.SetActive(false);
-        AugmentPanel.SetActive(true);
-    }
-    public void ResumeGame()
-    {
-        isLive = true;
-        Time.timeScale = 1;
-        PausePanel.SetActive(false);
-        PauseButton.SetActive(true);
-        AugmentPanel.SetActive(false);
-        if (expSlider != null)
-        {
-            expSlider.SliderAdjust(exp, playerLevelData.requiredExp[level]);
-        }
-    }
-
-    //레벨업과 경험치*************************************************************************
-    public void AddExp(int val)
-    {
-        exp += val;
-        if(expSlider!=null)
-        {
-            expSlider.SliderAdjust(exp, playerLevelData.requiredExp[level]);
-        }
-        if (playerLevelData.requiredExp[level]<=exp)
-        {
-            exp -= playerLevelData.requiredExp[level];
-            LevelUp();
-        }
-        
-    }
-    public void LevelUp()
-    {
-        level++;
-        OnLevelUp?.Invoke(level);
-        LevelUPPauseGame();//임시
-    }
-   
     //증강 관리 (Set으로)*************************************************************************
 
     public void AddAcquiredAugment(string augmentName)

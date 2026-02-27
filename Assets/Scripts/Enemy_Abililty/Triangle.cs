@@ -125,7 +125,7 @@ public class Triangle : Enemy
     {
         StopCoroutine(ChargeAttackSequence());
         isDashing=false;
-        GameManager.Instance.camerashaking.ShakeCamera(0.7f, 0.1f);
+        InGameManager.Instance.camerashaking.ShakeCamera(0.7f, 0.1f);
         rb.linearVelocity= Vector2.zero;
         rb.linearDamping = 5f;//다시 감속받음
         isKnockbackable = true;

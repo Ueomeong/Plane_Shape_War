@@ -53,7 +53,7 @@ public class Player_Move : MonoBehaviour
     }
     private void FixedUpdate()//기본 이동 & shoot 호출
     {
-        if (!GameManager.Instance.isLive) { return; }
+        if (!InGameManager.Instance.isLive) { return; }
         if (ShootingTime > 0)//쏘는 동안 발동됨
         {
             
@@ -127,7 +127,7 @@ public class Player_Move : MonoBehaviour
     private void Shoot()
     {
         //발사!
-        GameManager.Instance.player_state.UseSP(1);//SP한개 사용!
+        InGameManager.Instance.player_state.UseSP(1);//SP한개 사용!
         isShooting = true;
         float ChargeRatio = currentChargeTime / maxChargeTime;
         float finalShootingForce = Mathf.Lerp(minShooingForce, maxShooingForce, ChargeRatio);//최종힘

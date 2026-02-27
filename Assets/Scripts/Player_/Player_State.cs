@@ -7,7 +7,8 @@ public class Player_State : MonoBehaviour
     private float currentInvincibleTime;
     public bool isInvincible;
     public SpriteRenderer spriteRenderer;
-  
+    
+
     private void Start()
     {
         if (GameManager.Instance != null && GameManager.Instance.runtimePlayerData != null)
@@ -21,7 +22,7 @@ public class Player_State : MonoBehaviour
     }
     void Update()
     {
-        if (!GameManager.Instance.isLive) { return; }
+        if (!InGameManager.Instance.isLive) { return; }
         if(currentInvincibleTime>=0)
         {
             currentInvincibleTime -= Time.deltaTime;
@@ -50,11 +51,11 @@ public class Player_State : MonoBehaviour
     public void TakeDamage(int damage)// 일단 int로 하자! 피해 입음!
     {
         if (isInvincible) { return;  }
-        GameManager.Instance.camerashaking.ShakeCamera(1.5f, 0.2f);
+        InGameManager.Instance.camerashaking.ShakeCamera(1.5f, 0.2f);
         isInvincible = true;
         currentInvincibleTime = InvincibleTime;
         PlayerData.currentHP -= damage;
-        GameManager.Instance.hpManager.UpdateHP();
+        InGameManager.Instance.hpManager.UpdateHP();
         if (PlayerData.currentHP <= 0)
         {
             Die();
@@ -68,7 +69,7 @@ public class Player_State : MonoBehaviour
         {
             PlayerData.currentSP = 0;
         }
-        GameManager.Instance.spManager.UpdateSP();
+        InGameManager.Instance.spManager.UpdateSP();
     }
     public void GetSP(int value)
     {
@@ -77,7 +78,7 @@ public class Player_State : MonoBehaviour
         {
             PlayerData.currentSP = PlayerData.maxSP;
         }
-        GameManager.Instance.spManager.UpdateSP();
+        InGameManager.Instance.spManager.UpdateSP();
     }
 
     public void Heal(int heal)// 일단 int로 하자! 힐을 받음!
@@ -87,19 +88,21 @@ public class Player_State : MonoBehaviour
         {
             PlayerData.currentHP=PlayerData.maxHP;
         }
-        GameManager.Instance.hpManager.UpdateHP();
+        InGameManager.Instance.hpManager.UpdateHP();
     }
 
     private void Die()
     {
         gameObject.SetActive(false);
-        GameObject eff = GameManager.Instance.poolmanager.Get(11);
-        GameManager.Instance.camerashaking.ShakeCamera(3f, 0.15f);
+        GameObject eff = InGameManager.Instance.poolmanager.Get(11);
+        InGameManager.Instance.camerashaking.ShakeCamera(3f, 0.15f);
         if (eff != null)
         {
             eff.transform.position = transform.position;
         }
         Debug.Log("GameOver!");
+        InGameManager.Instance.GameOverProcess();
         //GameManager.Instance.PauseGame();
     }
+
 }

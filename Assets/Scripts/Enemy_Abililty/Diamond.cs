@@ -46,7 +46,7 @@ public class Diamond : Enemy
     protected override void FixedUpdate()
     {
 
-        if (!GameManager.Instance.isLive) { return; }
+        if (!InGameManager.Instance.isLive) { return; }
         DetectPlayer();
         outlineSpriteRenderer.color = Color.Lerp(outlineColor, playerChasingColor, willToChase / 3);
         RandMoveTimeCount-=Time.fixedDeltaTime;
@@ -157,7 +157,7 @@ public class Diamond : Enemy
 
     private void Fire()
     {
-        GameObject bulletObj = GameManager.Instance.poolmanager.Get(9);
+        GameObject bulletObj = InGameManager.Instance.poolmanager.Get(9);
 
         EnemyBullet bullet = bulletObj.GetComponent<EnemyBullet>();
         if(bullet!=null)

@@ -30,7 +30,7 @@ public class AugmentSlot : MonoBehaviour
             _data.ApplyAugment(); // 증강 효과 적용
 
             GameManager.Instance.AddAcquiredAugment(_data.augmentName);
-            GameManager.Instance.ResumeGame(); // 게임 재개
+            InGameManager.Instance.ResumeGame(); // 게임 재개
         }
     }
     private void UpdateColor(AugmentTier tier)
