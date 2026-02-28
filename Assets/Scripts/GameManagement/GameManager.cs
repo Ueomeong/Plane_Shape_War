@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private HashSet<string> acquiredAugments = new HashSet<string>();//획득한 증강 저장
     public PlayerData PlayerData;//원본
     public PlayerData runtimePlayerData;//복사본
+    [Header("ShopData")]
+    public ShopItemSetting ShopItemSetting;//사용하나?
     /*
     [Header("UI")]
     public GameObject PauseButton;
@@ -106,6 +108,21 @@ public class GameManager : MonoBehaviour
     public void ResetAugments()
     {
         acquiredAugments.Clear();
+    }
+    //상점 업그레이드 관리
+    // 특정 스탯의 현재 레벨을 불러오는 함수
+    public int GetStatLevel(StatType stat)
+    {
+        // "AttackPower_Level" 같은 이름으로 저장됨. 기본값은 0레벨
+        return PlayerPrefs.GetInt(stat.ToString() + "_Level", 0);
+    }
+
+    // 특정 스탯의 레벨을 1 올리고 저장하는 함수
+    public void IncreaseStatLevel(StatType stat)
+    {
+        int currentLevel = GetStatLevel(stat);
+        PlayerPrefs.SetInt(stat.ToString() + "_Level", currentLevel + 1);
+        PlayerPrefs.Save();
     }
 
     //데이터 저장과 불러오기*************************************************************************
