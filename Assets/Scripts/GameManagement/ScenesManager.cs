@@ -22,7 +22,8 @@ public class ScenesManager : MonoBehaviour
     }
     public void OnClickMainMenu()
     {
-        
+        GameManager.Instance.MoneyChange(GameManager.Instance.temporaryMoney);
+        GameManager.Instance.SaveGameData();
         SceneManager.LoadScene("MainMenuScene");
     }
 }

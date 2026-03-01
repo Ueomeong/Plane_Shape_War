@@ -16,10 +16,11 @@ MonoBehaviour:
   currentHP: 5
   maxSP: 5
   currentSP: 5
+  regenTimeSP: 10
   invincibleTime: 0.8
   moveSpeed: 5
-  maxShootingForce: 10
-  minShootingForce: 2
+  maxShootingForce: 8
+  minShootingForce: 3
   maxChargeTime: 1
   chargeDamage: 10
   damage: 15

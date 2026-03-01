@@ -8,6 +8,7 @@ public class PlayerData : ScriptableObject
     public int currentHP;
     public int maxSP;
     public int currentSP;
+    public float regenTimeSP;//마나회복속도
     public float invincibleTime;
     [Header("*Movement")]
     public float moveSpeed;

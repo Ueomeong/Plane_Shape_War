@@ -21,7 +21,7 @@ public class ShopItemData : ScriptableObject
     public string ItemDesc;//설명
     public Sprite ItemIcon;//아이콘
     public int basePrice;//초기 가격
-    public int priceIncreasement;//레벨당 증가하는 가격
+    public int priceIncrement;//레벨당 증가하는 가격
     public float upgradeValue;//증가하는 능력치의 값
     [Header("Upgrade Target")]
     public StatType targetStat;

@@ -12,25 +12,8 @@ public class GameManager : MonoBehaviour
     private HashSet<string> acquiredAugments = new HashSet<string>();//획득한 증강 저장
     public PlayerData PlayerData;//원본
     public PlayerData runtimePlayerData;//복사본
-    [Header("ShopData")]
-    public ShopItemSetting ShopItemSetting;//사용하나?
-    /*
-    [Header("UI")]
-    public GameObject PauseButton;
-    public GameObject PausePanel;
-    public GameObject AugmentPanel;
-    public EXP_Slider expSlider;
-    [Header("Scripts")]
-    public Player_Move player_move;
-    public Player_State player_state;
-    public mousePointer mousepointer;
-    public PoolManager poolmanager;
-    public HP_Manager hpManager;
-    public CameraShaking camerashaking;
-    public SP_Manager spManager;
-    [Header("Events")]
-    public System.Action<int> OnLevelUp;*/
-    //[Header("Scenes")]
+    [Header("Shop settings")]
+    public ShopItemData[] allShopItems; //모든 상점에서 팔 scriptableObject 저장필요
 
     private void Awake()
     {
@@ -55,7 +38,8 @@ public class GameManager : MonoBehaviour
 
         // 2. 증강 목록 초기화
         acquiredAugments.Clear();
-
+        //영구 업그레이드 적용
+        ApplyPermanentUpgrades();
         // 3. 스테이지 설정
         //currentStageIndex = stageNum;
 
@@ -109,7 +93,7 @@ public class GameManager : MonoBehaviour
     {
         acquiredAugments.Clear();
     }
-    //상점 업그레이드 관리
+    //상점 업그레이드 관리*******************************************************************************
     // 특정 스탯의 현재 레벨을 불러오는 함수
     public int GetStatLevel(StatType stat)
     {
@@ -125,6 +109,65 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    private void ApplyPermanentUpgrades()
+    {
+        foreach (var item in allShopItems)
+        {
+            int level = GetStatLevel(item.targetStat);
+
+            if (level > 0)
+            {
+                float totalUpgradeValue = level * item.upgradeValue;
+
+                ApplyStatToRuntime(item.targetStat, totalUpgradeValue);
+            }
+        }
+    }
+    private void ApplyStatToRuntime(StatType stat, float value)
+    {
+        switch (stat)
+        {
+            case StatType.MaxHP:
+                runtimePlayerData.maxHP += (int)value;
+                break;
+            case StatType.MaxSp:
+                runtimePlayerData.maxSP += (int)value;
+                break;
+            case StatType.InvicibleTime:
+                runtimePlayerData.invincibleTime += value;
+                break;
+            case StatType.MoveSpeed:
+                runtimePlayerData.moveSpeed += value;
+                break;
+            case StatType.MaxShootingForce:
+                runtimePlayerData.maxShootingForce += value;
+                break;
+            case StatType.MinShootingForce:
+                runtimePlayerData.minShootingForce += value;
+                break;
+            case StatType.MaxChargeTime:
+                runtimePlayerData.maxChargeTime += value;
+                break;
+            case StatType.Damage:
+                runtimePlayerData.damage += value;
+                break;
+            case StatType.Modifier_rateOfFire:
+                runtimePlayerData.Modifier_rateOfFire += value;
+                break;
+            case StatType.Per:
+                runtimePlayerData.per += (int)value;
+                break;
+            case StatType.ContinuousFire:
+                runtimePlayerData.continuousFire += (int)value;
+                break;
+            case StatType.Spread_Bullet:
+                runtimePlayerData.spread_Bullet += (int)value;
+                break;
+            default:
+                Debug.Log("존재하지 않는 스텟입니다.");
+                break;
+        }
+    }
     //데이터 저장과 불러오기*************************************************************************
     public void StageClear()//스테이지 클리어시 호출
     {
@@ -148,5 +191,18 @@ public class GameManager : MonoBehaviour
     {
         stage = PlayerPrefs.GetInt("CurrentStage",0);
         money = PlayerPrefs.GetInt("CurrentMoney",0);
+    }
+
+    public void HardReset()
+    {
+        PlayerPrefs.DeleteAll();
+
+        money = 0;
+        stage = 1; 
+        temporaryMoney = 0;
+
+        SaveGameData();
+
+        Debug.Log("모든 게임 데이터가 완벽하게 초기화되었습니다!");
     }
 }

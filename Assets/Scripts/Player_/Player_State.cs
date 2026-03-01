@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Player_State : MonoBehaviour
 {
-    private PlayerData PlayerData;
+    public PlayerData PlayerData;
     public float InvincibleTime => PlayerData.invincibleTime;
     private float currentInvincibleTime;
     public bool isInvincible;
     public SpriteRenderer spriteRenderer;
-    
+    public float regenTimeRemainSP;//sp리젠까지 남은 시간
 
     private void Start()
     {
@@ -23,6 +23,7 @@ public class Player_State : MonoBehaviour
     void Update()
     {
         if (!InGameManager.Instance.isLive) { return; }
+        //무적시간 ********************
         if(currentInvincibleTime>=0)
         {
             currentInvincibleTime -= Time.deltaTime;
@@ -43,9 +44,19 @@ public class Player_State : MonoBehaviour
             color.a = alpha;
             spriteRenderer.color = color;
         }
+        //SP리젠**************************
+        if (PlayerData.maxSP > PlayerData.currentSP)
+        {
+            regenTimeRemainSP += Time.deltaTime;
+        }
         else
         {
-           
+            regenTimeRemainSP = 0;
+        }
+        if (regenTimeRemainSP>=PlayerData.regenTimeSP)
+        {
+            GetSP(1);
+            regenTimeRemainSP = 0;
         }
     }
     public void TakeDamage(int damage)// 일단 int로 하자! 피해 입음!

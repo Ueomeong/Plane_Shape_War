@@ -659,6 +659,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3516333545902284348, guid: d376c12b6508cd3498ff06bca9b028ad, type: 3}
+      propertyPath: allShopItems.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516333545902284348, guid: d376c12b6508cd3498ff06bca9b028ad, type: 3}
+      propertyPath: 'allShopItems.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 5dbafc7c5e1a36f42bdc7584d2ae38f4, type: 2}
+    - target: {fileID: 3516333545902284348, guid: d376c12b6508cd3498ff06bca9b028ad, type: 3}
+      propertyPath: 'allShopItems.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 79462d444f3d4d24f808fd2651557161, type: 2}
+    - target: {fileID: 3516333545902284348, guid: d376c12b6508cd3498ff06bca9b028ad, type: 3}
+      propertyPath: 'allShopItems.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 3727f86e05438554d9373d27b28cb35b, type: 2}
+    - target: {fileID: 3516333545902284348, guid: d376c12b6508cd3498ff06bca9b028ad, type: 3}
+      propertyPath: 'allShopItems.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c5e8c75e99e31d84f8c92b721be27dfa, type: 2}
+    - target: {fileID: 3516333545902284348, guid: d376c12b6508cd3498ff06bca9b028ad, type: 3}
+      propertyPath: 'allShopItems.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 7732b13aa1a1f934681c974da0060324, type: 2}
+    - target: {fileID: 3516333545902284348, guid: d376c12b6508cd3498ff06bca9b028ad, type: 3}
+      propertyPath: 'allShopItems.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d9360683b5f5e284d89c5e716cd20222, type: 2}
+    - target: {fileID: 3516333545902284348, guid: d376c12b6508cd3498ff06bca9b028ad, type: 3}
+      propertyPath: 'allShopItems.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 666719e04f210a243b5bdd9426da7734, type: 2}
+    - target: {fileID: 3516333545902284348, guid: d376c12b6508cd3498ff06bca9b028ad, type: 3}
+      propertyPath: 'allShopItems.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f513a6ab6c4fece49b16ed2c9aa5de1a, type: 2}
+    - target: {fileID: 3516333545902284348, guid: d376c12b6508cd3498ff06bca9b028ad, type: 3}
+      propertyPath: 'allShopItems.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b600493ab42a4a45941159a023e77dd, type: 2}
+    - target: {fileID: 3516333545902284348, guid: d376c12b6508cd3498ff06bca9b028ad, type: 3}
+      propertyPath: 'allShopItems.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f00dbc310f696db4b929900085539cf3, type: 2}
+    - target: {fileID: 3516333545902284348, guid: d376c12b6508cd3498ff06bca9b028ad, type: 3}
+      propertyPath: 'allShopItems.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e8882a93efc82044da554434e295e7ea, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 7161650343011118037}
   - component: {fileID: 4461386408588915507}
   - component: {fileID: 6985241438819891740}
+  - component: {fileID: 1844331025873350311}
   m_Layer: 5
   m_Name: ShopItem
   m_TagString: Untagged
@@ -292,6 +293,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1844331025873350311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4435909207635832588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2591c01a70b29e340af1741815f5e122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopItemSetting
+  Icon: {fileID: 309236586389879301}
+  ItemName: {fileID: 7058195790625204514}
+  ItemDesc: {fileID: 7733225882276283665}
+  ItemPrice: {fileID: 8666701095490145807}
+  BuyButton: {fileID: 1648221315480526857}
 --- !u!1 &5747405598166339973
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,8 +344,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 51, y: -52}
-  m_SizeDelta: {x: 650, y: 50}
+  m_AnchoredPosition: {x: 125, y: -52}
+  m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3292652449703817791
 CanvasRenderer:
@@ -604,7 +622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 444, y: 0}
+  m_AnchoredPosition: {x: 444, y: 3}
   m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5593573932835352249
