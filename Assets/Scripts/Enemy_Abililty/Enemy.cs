@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float willToChase;//플레이어가 근처에 있지 않으면 감소하고 0이되면 더이상 플레이어를 쫓지 않을것
     [SerializeField] protected float reconRange;//정찰 범위
     [SerializeField] protected bool isKnockbackable = true;
+
     
     public float currentHP;//0이면 사망 판정
     public float attackDamage;//플레이어에게 입힐 피해
@@ -279,7 +280,7 @@ public class Enemy : MonoBehaviour
 
     /// <summary>
 
-    private void OnCollisionStay2D(Collision2D collision)
+    protected virtual void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
