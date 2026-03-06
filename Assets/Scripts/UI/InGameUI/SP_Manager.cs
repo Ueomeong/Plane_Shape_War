@@ -12,6 +12,10 @@ public class SP_Manager : MonoBehaviour
     private List<GameObject> SP = new List<GameObject>();
     private void Start()
     {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.spManager = this;
+        }
         if (GameManager.Instance != null && GameManager.Instance.runtimePlayerData != null)
         {
             PlayerData = GameManager.Instance.runtimePlayerData;

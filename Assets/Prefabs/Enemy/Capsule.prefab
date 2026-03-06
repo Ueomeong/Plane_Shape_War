@@ -47,12 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75056cc15a0930840b0df58a600ca18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Capsule
-  maxHP: 1000
-  detectRange: 0
+  maxHP: 200
+  detectRange: 20
   AttackDamage: 0
-  moveSpeed: 0
+  moveSpeed: 3
   moneyDrop: 0
   willToChase: 0
+  reconRange: 10
+  isKnockbackable: 1
   currentHP: 0
   attackDamage: 0
   isChasingPlayer: 0
@@ -60,8 +62,13 @@ MonoBehaviour:
   knockbackTime: 0.1
   detectionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 136
   outlineSpriteRenderer: {fileID: 5056974797345825111}
+  drop_EXP: 1
+  drop_Money: 1
+  drop_Items: 0
+  spawnSquareNum: 5
+  spreadRange: 1
 --- !u!50 &2456316305930884052
 Rigidbody2D:
   serializedVersion: 5
@@ -88,7 +95,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &6774247030138158502
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

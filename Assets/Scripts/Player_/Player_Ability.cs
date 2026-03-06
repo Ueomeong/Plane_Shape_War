@@ -46,6 +46,10 @@ public class Player_Ability : MonoBehaviour
         {
             InGameManager.Instance.poolmanager.Get(14);
         }
+        if (Keyboard.current.oKey.wasPressedThisFrame)
+        {
+            InGameManager.Instance.poolmanager.Get(4);
+        }
         if (Keyboard.current.xKey.wasPressedThisFrame)
         {
             InGameManager.Instance.player_state.TakeDamage(1);

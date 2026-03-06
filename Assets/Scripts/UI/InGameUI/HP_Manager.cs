@@ -12,6 +12,10 @@ public class HP_Manager : MonoBehaviour
     private List<GameObject> hearts = new List<GameObject>();
     private void Start()
     {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.hpManager = this;
+        }
         HPColor = new Color(190/255f, 15/255f, 0f);
         HPColorDark = new Color(37 / 255f, 37 / 255f, 37 / 255f);
         if (GameManager.Instance != null && GameManager.Instance.runtimePlayerData != null)

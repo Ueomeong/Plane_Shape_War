@@ -5,16 +5,20 @@ public class GameManager : MonoBehaviour
 {
     [Header("Game Data")]
     public static GameManager Instance;//게임 영구적으로 남는 데이터 관리
-    public int stage;//클리어한 스테이지
+    public int stageID;//클리어한 스테이지 // 이 값에 따라 스테이지를 해금하도록 하자.// 무한모드, 이벤트 스테이지 같은 경우는 stageID 0으로 해서 관리해보자고.
     public int money;//돈 보유량
     public int temporaryMoney;//저장했다가 게임 클리어시 이 값을 매개변수로 넣어 MoneyChage호출
     [Header("GamePlay Data")]
     private HashSet<string> acquiredAugments = new HashSet<string>();//획득한 증강 저장
     public PlayerData PlayerData;//원본
     public PlayerData runtimePlayerData;//복사본
+    [Header("Game settings")]
+    public SP_Manager spManager;
+    public HP_Manager hpManager;
     [Header("Shop settings")]
     public ShopItemData[] allShopItems; //모든 상점에서 팔 scriptableObject 저장필요
-
+    [Header("Stage Data")]
+    public StageData currentSelectedStage; // 플레이어가 선택한 스테이지 데이터 저장
     private void Awake()
     {
         if (Instance == null)
@@ -27,11 +31,12 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        StartStage(1);//임시
+        StartStage();//임시
     }
     //스테이지 시작 로직*************************************************************************
-    public void StartStage(int stageNum)
+    public void StartStage()
     {
+        
         // 1. 원본 데이터를 복제하여 "이번 판"용 데이터를 만듭니다.
         // 이렇게 하면 이전 판의 데이터는 사라지고, 깔끔한 새 상태로 시작합니다.
         runtimePlayerData = Instantiate(PlayerData);
@@ -42,7 +47,13 @@ public class GameManager : MonoBehaviour
         ApplyPermanentUpgrades();
         // 3. 스테이지 설정
         //currentStageIndex = stageNum;
-
+        runtimePlayerData.currentHP = runtimePlayerData.maxHP;
+        runtimePlayerData.currentSP = runtimePlayerData.maxSP;
+        if(spManager!=null & hpManager!=null)
+        {
+            spManager.InitSP();
+            hpManager.InitHP();
+        }
         // 4. 첫 번째 라운드 씬 로드 (씬 이름은 프로젝트에 맞게 관리)
         //SceneManager.LoadScene($"Stage{stageNum}_Round1");
 
@@ -51,6 +62,7 @@ public class GameManager : MonoBehaviour
         {
             InGameManager.Instance.ResumeGame();
         }
+
     }
     /*
     public void NextRound(string nextSceneName)
@@ -171,7 +183,7 @@ public class GameManager : MonoBehaviour
     //데이터 저장과 불러오기*************************************************************************
     public void StageClear()//스테이지 클리어시 호출
     {
-        stage++;
+        stageID++;
         MoneyChange(temporaryMoney);
         SaveGameData();
     }
@@ -183,13 +195,13 @@ public class GameManager : MonoBehaviour
     }
     public void SaveGameData()
     {
-        PlayerPrefs.SetInt("CurrentStage", stage);
+        PlayerPrefs.SetInt("CurrentStage", stageID);
         PlayerPrefs.SetInt("CurrentMoney", money);
         PlayerPrefs.Save();
     }
     public void LoadGameData()
     {
-        stage = PlayerPrefs.GetInt("CurrentStage",0);
+        stageID = PlayerPrefs.GetInt("CurrentStage",0);
         money = PlayerPrefs.GetInt("CurrentMoney",0);
     }
 
@@ -198,7 +210,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.DeleteAll();
 
         money = 0;
-        stage = 1; 
+        stageID = 1; 
         temporaryMoney = 0;
 
         SaveGameData();

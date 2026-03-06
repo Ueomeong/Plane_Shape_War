@@ -40,8 +40,9 @@ public class InGameManager : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.StartStage(1);
+            GameManager.Instance.StartStage();
         }
+        StageData stageToPlay = GameManager.Instance.currentSelectedStage;
     }
 
     //게임 정지, 증강 획득, 재시작,게임오버 등 게임의 흐름 제어*******************************************************************
