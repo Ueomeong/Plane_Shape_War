@@ -12,6 +12,8 @@ public enum EnemyType
     EnemySpawner_square=14,
     EnemySpawner_triangle=15,
     EnemySpawner_hexagon=16,
+    EnemySpawner_diamond = 17,
+    EnemySpawner_capsule = 18,
 }
 
 // 개별 적의 스폰 타이밍과 위치를 담는 구조체

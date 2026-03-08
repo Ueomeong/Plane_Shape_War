@@ -67,6 +67,10 @@ MonoBehaviour:
   drop_EXP: 1
   drop_Money: 1
   drop_Items: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  suffocationDamage: 50
   spawnSquareNum: 5
   spreadRange: 1
 --- !u!50 &2456316305930884052

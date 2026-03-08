@@ -67,6 +67,10 @@ MonoBehaviour:
   drop_EXP: 3
   drop_Money: 2
   drop_Items: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  suffocationDamage: 50
   maxChargeTime: 1
   attackCoolTime: 1
   currentChargeTime: 0

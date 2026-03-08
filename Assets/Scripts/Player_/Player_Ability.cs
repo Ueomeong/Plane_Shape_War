@@ -46,6 +46,22 @@ public class Player_Ability : MonoBehaviour
         {
             InGameManager.Instance.poolmanager.Get(14);
         }
+        if (Keyboard.current.hKey.wasPressedThisFrame)
+        {
+            InGameManager.Instance.poolmanager.Get(15);
+        }
+        if (Keyboard.current.jKey.wasPressedThisFrame)
+        {
+            InGameManager.Instance.poolmanager.Get(16);
+        }
+        if (Keyboard.current.kKey.wasPressedThisFrame)
+        {
+            InGameManager.Instance.poolmanager.Get(17);
+        }
+        if (Keyboard.current.lKey.wasPressedThisFrame)
+        {
+            InGameManager.Instance.poolmanager.Get(18);
+        }
         if (Keyboard.current.oKey.wasPressedThisFrame)
         {
             InGameManager.Instance.poolmanager.Get(4);

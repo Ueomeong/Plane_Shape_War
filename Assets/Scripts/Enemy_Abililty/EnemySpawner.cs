@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemySpawner : Enemy
 {
@@ -11,11 +12,14 @@ public class EnemySpawner : Enemy
     [SerializeField] private float ShootingForce; //스폰시 던지는 힘
     [SerializeField] private float initDropMoney;// 돈 드롭 양
     [SerializeField] private float initDropEXP; //exp드롭 양
+    [SerializeField] private bool isInfinity;//무한 스포너일 경우 아직 미구현*****************
     private int currentSpawnCount;
     private float spawnTimer;
     private bool isDepleted; // 생성량을 모두 소모했는지 여부
-    [Header("state Outline")]
+    [Header("Visual Setting")]
     public SpriteRenderer StateOutLine;
+    public GameObject Visual;
+    
     private Color FullChargedColor;
     private Color NoneChargedColor;
 
@@ -38,6 +42,16 @@ public class EnemySpawner : Enemy
 
     protected override void FixedUpdate()
     {
+        if(isDepleted)//다 소환되었으면 자동으로 삭제 되도록 하자.
+        {
+            currentHP -= 100*Time.fixedDeltaTime;
+            HpColor = Color.Lerp(Color.white, Color.black, currentHP / maxHP);
+            if (currentHP <= 0)
+            {
+                GameManager.Instance.temporaryMoney += moneyDrop;
+                Die();
+            }
+        }
         // 게임 오버 상태이거나, 죽었거나, 생성량을 다 소모했다면 작동 중지
         if (!InGameManager.Instance.isLive || currentHP <= 0 || isDepleted) return;
 
@@ -55,6 +69,19 @@ public class EnemySpawner : Enemy
             StateOutLine.color = Color.Lerp(FullChargedColor, NoneChargedColor,spawnTimer/spawnInterval);
         }
 
+        if (Visual != null && isChasingPlayer)
+        {
+            // 기본 회전 속도 + (타이머 비율에 따른 추가 속도)
+            // spawnTimer / spawnInterval 은 0에서 1까지 변합니다.
+            float baseRotationSpeed = 100f; // 최소 회전 속도
+            float maxBonusSpeed = 1000f;   // 스폰 직전 추가될 최대 속도
+
+            float currentRotationSpeed = baseRotationSpeed + (maxBonusSpeed * (spawnTimer / spawnInterval));
+
+            // Z축 기준 회전 (2D 게임 기준)
+            Visual.transform.Rotate(Vector3.forward * currentRotationSpeed * Time.fixedDeltaTime);
+        }
+
         // 플레이어를 감지했을 때만 적을 스폰!
         if (isChasingPlayer)
         {
@@ -67,7 +94,7 @@ public class EnemySpawner : Enemy
         }
         else
         {
-            spawnTimer = 0f;
+            //spawnTimer = 0f; //이어서 해보자
         }
     }
 
@@ -96,7 +123,7 @@ public class EnemySpawner : Enemy
         currentSpawnCount--;
 
         // 최대 생성량을 모두 소모했을 때의 처리
-        if (currentSpawnCount <= 0)
+        if (currentSpawnCount == 0)//-1일 경우에는 무한 생성
         {
             HandleDepletion();
         }

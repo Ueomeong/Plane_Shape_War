@@ -44,6 +44,9 @@ public class Enemy : MonoBehaviour
     [Header("waiting?")]
     protected bool isWaiting;
     protected float currentWaittime;
+    [Header("Anti-Stuck Settings")]
+    [SerializeField] protected LayerMask wallLayer; // 맵의 벽 레이어 할당
+    [SerializeField] protected float suffocationDamage = 50f; // 초당 질식 데미지
 
     public virtual void Awake()
     {
@@ -108,6 +111,7 @@ public class Enemy : MonoBehaviour
     protected virtual void FixedUpdate()//오버라이딩 가능 함수 이동 제어
     {
         if (!InGameManager.Instance.isLive) { return; }
+        CheckStuckInWall();
         DetectPlayer();
         outlineSpriteRenderer.color = Color.Lerp(outlineColor,playerChasingColor,willToChase/3);
         if(isChasingPlayer)
@@ -159,12 +163,6 @@ public class Enemy : MonoBehaviour
         Vector2 randomPoint = UnityEngine.Random.insideUnitCircle * reconRange;
         targetPosition = spawnPosition + (Vector3)randomPoint;
     }
-
-
-
-
-
-
     public virtual void TakeDamage(float damage,Vector3 hitDirection)
     {
         //맞았을대 발끈!
@@ -277,7 +275,30 @@ public class Enemy : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
         rb.AddForce(hitDir.normalized * knockbackForce, ForceMode2D.Impulse);
     }
+    ///벽끼임 방지*************************************************************
+    protected virtual void CheckStuckInWall()
+    {
+        if (currentHP <= 0) return;
 
+        // 중심점(transform.position)이 단 하나의 점으로서 벽 레이어와 겹치는지 확인
+        Collider2D hit = Physics2D.OverlapPoint(transform.position, wallLayer);
+
+        if (hit != null)
+        {
+            // 벽 안에 갇힌 상태! Time.fixedDeltaTime을 곱해 초당 데미지 적용
+            currentHP -= suffocationDamage * Time.fixedDeltaTime;
+
+            // 색상 업데이트 (기존 TakeDamage의 쉐이크/수축 효과 제외)
+            HpColor = Color.Lerp(Color.white, Color.black, currentHP / maxHP);
+
+            if (currentHP <= 0)
+            {
+                // 주의: 벽 안에서 죽었으므로 아이템을 떨어뜨리지 않고(DropLoot 생략),
+                // 카메라 쉐이크 없이 조용히 비활성화만 시킵니다.
+                gameObject.SetActive(false);
+            }
+        }
+    }
     /// <summary>
 
     protected virtual void OnCollisionStay2D(Collision2D collision)

@@ -312,6 +312,10 @@ MonoBehaviour:
   drop_EXP: 5
   drop_Money: 5
   drop_Items: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  suffocationDamage: 50
   shieldRenderer: {fileID: 1601177363232218730}
   isShieldOn: 0
   maxShieldHP: 100

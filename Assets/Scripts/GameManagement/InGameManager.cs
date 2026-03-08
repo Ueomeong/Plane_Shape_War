@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Collections;
 public class InGameManager : MonoBehaviour
 {
     public static InGameManager Instance;//인게임 플레이에 필요한 데이터들
@@ -43,8 +44,45 @@ public class InGameManager : MonoBehaviour
             GameManager.Instance.StartStage();
         }
         StageData stageToPlay = GameManager.Instance.currentSelectedStage;
-    }
+        if (stageToPlay != null)
+        {
+            // 3. 맵 생성 (MapTile 인스턴스화)
+            if (stageToPlay.mapTile != null)
+            {
+                Instantiate(stageToPlay.mapTile, Vector3.zero, Quaternion.identity);
+            }
 
+            // 4. 적 스폰 코루틴 시작
+            if (stageToPlay.enemySpawnList != null && stageToPlay.enemySpawnList.Count > 0)
+            {
+                StartCoroutine(SpawnEnemiesRoutine(stageToPlay.enemySpawnList));
+            }
+        }
+        else
+        {
+            Debug.LogError("선택된 스테이지 데이터가 없습니다!");
+        }
+    }
+    private IEnumerator SpawnEnemiesRoutine(List<EnemySpawnData> spawnList)
+    {
+        // 시간순으로 스폰하기 위해 딜레이 대기 후 풀매니저를 통해 적 소환
+        foreach (var spawnData in spawnList)
+        {
+            // spawnData.spawnDelay가 이전 적 스폰 후 대기 시간이라고 가정
+            yield return new WaitForSeconds(spawnData.spawnDelay);
+
+            // 주의: 가지고 계신 poolmanager의 실제 함수명에 맞게 수정하세요.
+            // (예: poolmanager.Get((int)spawnData.enemyType, spawnData.spawnPosition))
+            if (poolmanager != null)
+            {
+                GameObject enemy = poolmanager.Get((int)spawnData.enemyType);
+                if (enemy != null)
+                {
+                    enemy.transform.position = spawnData.spawnPosition;
+                }
+            }
+        }
+    }
     //게임 정지, 증강 획득, 재시작,게임오버 등 게임의 흐름 제어*******************************************************************
     public void TogglePauseButton()
     {
