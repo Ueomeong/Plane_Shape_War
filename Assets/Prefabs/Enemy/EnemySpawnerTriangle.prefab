@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 5372543502077004146}
   m_Layer: 6
   m_Name: EnemySpawnerTriangle
-  m_TagString: Enemy
+  m_TagString: EnemySpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

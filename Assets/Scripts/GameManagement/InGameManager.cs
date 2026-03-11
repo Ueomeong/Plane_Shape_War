@@ -10,12 +10,14 @@ public class InGameManager : MonoBehaviour
     public int exp;//경험치
     public int level;//플레이어 레벨
     public bool isLive { get; private set; } = true;//멈추기
+    public bool isEnd;
     public PlayerLevelData playerLevelData;// 레벨업에 필요한 경험치
     [Header("UI")]
     public GameObject PauseButton;
     public GameObject PausePanel;
     public GameObject AugmentPanel;
     public GameObject GameOverPanel;
+    public GameObject GameWinPanel;
     public EXP_Slider expSlider;
 
     [Header("Scripts")]
@@ -28,6 +30,10 @@ public class InGameManager : MonoBehaviour
     public SP_Manager spManager;
     [Header("Events")]
     public System.Action<int> OnLevelUp;
+    [Header("Stage")]
+    StageData stageData;
+    private int totalSpawnerCount;
+    public int currentSpawnerCount;
 
     private void Awake()//게임 시작시 초기화 되어야 하는 것들.
     {
@@ -39,23 +45,26 @@ public class InGameManager : MonoBehaviour
     }
     private void Start()
     {
+        isEnd = false;
         if (GameManager.Instance != null)
         {
             GameManager.Instance.StartStage();
         }
-        StageData stageToPlay = GameManager.Instance.currentSelectedStage;
-        if (stageToPlay != null)
+        stageData = GameManager.Instance.currentSelectedStage;
+        totalSpawnerCount = stageData.enemySpawnList.Count;//총 잡아야 하는 적의 수
+        currentSpawnerCount = 0;// 스포너 개수 초기화
+        if (stageData != null)
         {
             // 3. 맵 생성 (MapTile 인스턴스화)
-            if (stageToPlay.mapTile != null)
+            if (stageData.mapTile != null)
             {
-                Instantiate(stageToPlay.mapTile, Vector3.zero, Quaternion.identity);
+                Instantiate(stageData.mapTile, Vector3.zero, Quaternion.identity);
             }
 
             // 4. 적 스폰 코루틴 시작
-            if (stageToPlay.enemySpawnList != null && stageToPlay.enemySpawnList.Count > 0)
+            if (stageData.enemySpawnList != null && stageData.enemySpawnList.Count > 0)
             {
-                StartCoroutine(SpawnEnemiesRoutine(stageToPlay.enemySpawnList));
+                StartCoroutine(SpawnEnemiesRoutine(stageData.enemySpawnList));
             }
         }
         else
@@ -83,7 +92,7 @@ public class InGameManager : MonoBehaviour
             }
         }
     }
-    //게임 정지, 증강 획득, 재시작,게임오버 등 게임의 흐름 제어*******************************************************************
+    //게임 정지, 증강 획득, 재시작,게임오버,게임 승리 등 게임의 흐름 제어*******************************************************************
     public void TogglePauseButton()
     {
         if (isLive)
@@ -123,8 +132,27 @@ public class InGameManager : MonoBehaviour
         }
     }
 
+    public void AddCurrentSpawnerCount()
+    {
+        currentSpawnerCount++;
+        if (currentSpawnerCount >= totalSpawnerCount)
+        {
+            isLive = false;
+            Time.timeScale = 0.6f;
+            player_state.isInvincible = true;
+            GameWin();
+        }
+    }
+    public void GameWin()
+    {
+        GameManager.Instance.StageClear(stageData.stageID);//데이터 저장
+        isEnd = true;
+        GameWinPanel.SetActive(true);
+    }
+
     public void GameOverProcess()
     {
+        isEnd = true;
         GameOverPanel.SetActive(true);
     }
     //레벨업과 경험치------------------------------------------------------------------------

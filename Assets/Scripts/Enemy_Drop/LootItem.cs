@@ -51,7 +51,7 @@ public class LootItem : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetPlayer.position, moveSpeed * Time.deltaTime);
         moveSpeed += 10f * Time.deltaTime;
 
-        if(Vector3.Distance(transform.position,targetPlayer.position)<0.5f)
+        if(Vector3.Distance(transform.position,targetPlayer.position)<0.5f | InGameManager.Instance.isEnd)
         {
             playerGetThisItem(value);
         }

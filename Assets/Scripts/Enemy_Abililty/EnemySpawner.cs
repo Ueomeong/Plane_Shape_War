@@ -1,3 +1,4 @@
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -164,5 +165,11 @@ public class EnemySpawner : Enemy
     protected override void OnCollisionStay2D(Collision2D collision)
     {
         // 아무것도 하지 않음! (피해를 주거나 밀어내지 않습니다)
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        InGameManager.Instance.AddCurrentSpawnerCount();
     }
 }

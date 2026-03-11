@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StageData
   stageID: 3
   stageName: Stage3
+  stageDifficulty: 1
   stageThumbnail: {fileID: 0}
   mapTile: {fileID: 9014978149425181719, guid: 4491b47fb06c48c45a05ef170bcad1c6, type: 3}
   enemySpawnList:

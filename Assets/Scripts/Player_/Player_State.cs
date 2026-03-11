@@ -22,7 +22,7 @@ public class Player_State : MonoBehaviour
     }
     void Update()
     {
-        if (!InGameManager.Instance.isLive) { return; }
+        if (!InGameManager.Instance.isLive | InGameManager.Instance.isEnd) { return; }
         //무적시간 ********************
         if(currentInvincibleTime>=0)
         {
@@ -61,7 +61,7 @@ public class Player_State : MonoBehaviour
     }
     public void TakeDamage(int damage)// 일단 int로 하자! 피해 입음!
     {
-        if (isInvincible) { return;  }
+        if (isInvincible | InGameManager.Instance.isEnd) { return;  }
         InGameManager.Instance.camerashaking.ShakeCamera(1.5f, 0.2f);
         isInvincible = true;
         currentInvincibleTime = InvincibleTime;

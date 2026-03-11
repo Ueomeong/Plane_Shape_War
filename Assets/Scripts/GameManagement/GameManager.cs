@@ -181,9 +181,12 @@ public class GameManager : MonoBehaviour
         }
     }
     //데이터 저장과 불러오기*************************************************************************
-    public void StageClear()//스테이지 클리어시 호출
+    public void StageClear(int currentStageId)//스테이지 클리어시 호출
     {
-        stageID++;
+        if (stageID <= currentStageId)
+        {
+            stageID = currentStageId + 1;
+        }
         MoneyChange(temporaryMoney);
         SaveGameData();
     }
@@ -201,7 +204,7 @@ public class GameManager : MonoBehaviour
     }
     public void LoadGameData()
     {
-        stageID = PlayerPrefs.GetInt("CurrentStage",0);
+        stageID = PlayerPrefs.GetInt("CurrentStage",1);
         money = PlayerPrefs.GetInt("CurrentMoney",0);
     }
 

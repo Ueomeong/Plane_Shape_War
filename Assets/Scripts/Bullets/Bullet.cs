@@ -63,6 +63,16 @@ public class Bullet : MonoBehaviour
                 }
             }
         }
+        else if(collision.CompareTag("EnemySpawner"))
+        {
+            Enemy enemy = collision.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+
+                enemy.TakeDamage(damage, transform.up);
+                Deactive();//바로 총알 사라지게
+            }
+        }
         else
         {
             Deactive();

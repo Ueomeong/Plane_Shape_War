@@ -37,6 +37,7 @@ public class StageData : ScriptableObject
     [Header("UI 정보 (스테이지 선택 씬용)")]
     public int stageID;             // 스테이지 고유 번호 (잠금 해제 로직 등에 활용)
     public string stageName;        // UI 버튼에 표시될 텍스트
+    public float stageDifficulty;     // 적의 능력치에서 stageDifficulty 배율로 곱해질 예정 (예: 1.0 = 기본, 1.5 = 50% 더 강함)
     public Sprite stageThumbnail;   // UI 버튼에 들어갈 썸네일 이미지
 
     [Header("맵 정보 (게임 플레이 씬용)")]
