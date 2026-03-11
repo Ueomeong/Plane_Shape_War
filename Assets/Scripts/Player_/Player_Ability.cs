@@ -84,6 +84,12 @@ public class Player_Ability : MonoBehaviour
             InGameManager.Instance.player_state.GetSP(1);
         }
 
+
+
+        if (Keyboard.current.qKey.wasPressedThisFrame)
+        {
+            InGameManager.Instance.poolmanager.Get(18);
+        }
         if (coolTime >= 0f)
         {
             coolTime -= Time.deltaTime;

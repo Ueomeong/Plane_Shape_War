@@ -6,6 +6,5 @@ public abstract class ActiveAugment : MonoBehaviour//추상 클래스로 만들어서 각 �
     public string A_skillName;
     public float A_cooldown;
     public float A_ManaUseage;
-    public Image icon;
     public abstract void ExecuteSkill();
 }

@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     public bool isChasingPlayer;//0이면 정찰모드, 1이면 추적모드
    
     [Header("Knockback Settings")]
-    [SerializeField] protected float knockbackForce = 5f; // 기본 밀려나는 힘
+    [SerializeField] public float knockbackForce = 5f; // 기본 밀려나는 힘
     [SerializeField] protected float knockbackTime = 0.1f; // 넉백 되어있는 시간(AI 정지용)
     [Header("Detection Settings")]
     protected Vector3 targetPosition;//정찰중:무작위 위치 ,추적중:플레이어의 위치를 target으로 하자!

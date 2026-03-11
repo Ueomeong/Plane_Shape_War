@@ -42,7 +42,7 @@ public class GameWinPanel : MonoBehaviour
         sr.color = finalColor;
 
         // 대기 시간도 현실 시간 기준으로 0.1초 대기
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(0.3f);
 
         // 마침내 승리 메뉴 등장!
         GameWinMenu.SetActive(true);
