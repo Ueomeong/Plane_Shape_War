@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a08687495460a6342a939fc809948d06, type: 3}
+  m_Name: Active_PullAll
+  m_EditorClassIdentifier: Assembly-CSharp::ActiveAugmentData
+  augmentName: "pullall(\uC561\uD2F0\uBE0C)"
+  description: "\uD50C\uB808\uC774\uC5B4 \uC911\uC2EC\uC73C\uB85C \uB113\uC740 \uBC94\uC704
+    \uC548\uC5D0 \uBAA8\uB4E0 \uC801\uC5D0\uAC8C \uD53C\uD574\uB97C \uC8FC\uACE0
+    \uBC00\uCCD0\uB0B8\uB2E4.\nSP \uC18C\uBAA8: 1"
+  icon: {fileID: 0}
+  tier: 1
+  stat_MaxHP: 0
+  stat_CurrentHP: 0
+  stat_MaxSP: 0
+  stat_CurrentSP: 0
+  stat_InvincibleTime: 0
+  stat_MoveSpeed: 0
+  stat_MaxShootingForce: 0
+  stat_MinShootingForce: 0
+  stat_MaxChargeTime: 0
+  stat_ChargeDamage: 0
+  stat_BulletDamage: 0
+  stat_RateOfFire: 0
+  stat_BulletPerShot: 0
+  stat_continuousFire: 0
+  stat_spread_Bullet: 0
+  isNotMultiable: 1
+  skillPrefab: {fileID: 0}

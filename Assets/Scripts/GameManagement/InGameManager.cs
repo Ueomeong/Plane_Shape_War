@@ -19,10 +19,11 @@ public class InGameManager : MonoBehaviour
     public GameObject GameOverPanel;
     public GameObject GameWinPanel;
     public EXP_Slider expSlider;
-
+    public GoalText goalText;
     [Header("Scripts")]
     public Player_Move player_move;
     public Player_State player_state;
+    public Player_Ability player_ability;
     public mousePointer mousepointer;
     public PoolManager poolmanager;
     public HP_Manager hpManager;
@@ -32,7 +33,7 @@ public class InGameManager : MonoBehaviour
     public System.Action<int> OnLevelUp;
     [Header("Stage")]
     StageData stageData;
-    private int totalSpawnerCount;
+    public int totalSpawnerCount;
     public int currentSpawnerCount;
 
     private void Awake()//게임 시작시 초기화 되어야 하는 것들.
@@ -51,10 +52,10 @@ public class InGameManager : MonoBehaviour
             GameManager.Instance.StartStage();
         }
         stageData = GameManager.Instance.currentSelectedStage;
-        totalSpawnerCount = stageData.enemySpawnList.Count;//총 잡아야 하는 적의 수
         currentSpawnerCount = 0;// 스포너 개수 초기화
         if (stageData != null)
         {
+            totalSpawnerCount = stageData.enemySpawnList.Count;//총 잡아야 하는 적의 수
             // 3. 맵 생성 (MapTile 인스턴스화)
             if (stageData.mapTile != null)
             {
@@ -70,6 +71,10 @@ public class InGameManager : MonoBehaviour
         else
         {
             Debug.LogError("선택된 스테이지 데이터가 없습니다!");
+        }
+        if (goalText != null)
+        {
+            goalText.goalTextUpdate();
         }
     }
     private IEnumerator SpawnEnemiesRoutine(List<EnemySpawnData> spawnList)
@@ -135,6 +140,7 @@ public class InGameManager : MonoBehaviour
     public void AddCurrentSpawnerCount()
     {
         currentSpawnerCount++;
+        goalText.goalTextUpdate();
         if (currentSpawnerCount >= totalSpawnerCount)
         {
             isLive = false;

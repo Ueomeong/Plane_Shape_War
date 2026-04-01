@@ -169,6 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604736e5f09ffd94996f962a8aa1042c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::A_PushAllBullet
-  range: 7
+  range: 10
   expandDuration: 0.5
-  knockbackForce: 20
+  knockbackForce: 25

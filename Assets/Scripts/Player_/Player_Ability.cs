@@ -7,6 +7,10 @@ public class Player_Ability : MonoBehaviour
     public bool moveable;
     public float rateOfFire => PlayerData.rateOfFire;
     public float coolTime=0f;
+
+
+    public Transform skillHolder;//액티브 스킬이 장착될 위치
+    public ActiveAugment currentActiveSkill;
     private void Start()
     {
         if (GameManager.Instance != null && GameManager.Instance.runtimePlayerData != null)
@@ -26,6 +30,8 @@ public class Player_Ability : MonoBehaviour
         {
             StartCoroutine(shoot());
         }
+
+        //임시 키들
         if(Keyboard.current.tKey.wasPressedThisFrame)
         {
             InGameManager.Instance.poolmanager.Get(6);
@@ -83,12 +89,15 @@ public class Player_Ability : MonoBehaviour
         {
             InGameManager.Instance.player_state.GetSP(1);
         }
+        //
 
-
-
+        //
         if (Keyboard.current.qKey.wasPressedThisFrame)
         {
-            InGameManager.Instance.poolmanager.Get(18);
+            if (currentActiveSkill != null)
+            {
+                currentActiveSkill.TryUseSkill();
+            }
         }
         if (coolTime >= 0f)
         {
@@ -108,5 +117,23 @@ public class Player_Ability : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         yield return null;
+    }
+
+    public void EquipActiveSkill(GameObject newSkill)
+    {
+        if(currentActiveSkill!=null)//스킬이 있음
+        {
+            currentActiveSkill.OnDisable();//기존 스킬 비활성화
+            Destroy(currentActiveSkill.gameObject);
+        }
+        //새 스킬 장착
+        Transform parentTransform = skillHolder != null ? skillHolder : transform;
+        GameObject skillObj = Instantiate(newSkill, parentTransform);
+
+        // 위치 초기화 (부모 자식 관계가 되었으므로 localPosition)
+        skillObj.transform.localPosition = Vector3.zero;
+
+        // 3. 컴포넌트 참조 저장
+        currentActiveSkill = skillObj.GetComponent<ActiveAugment>();
     }
 }

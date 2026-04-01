@@ -6,4 +6,8 @@ public class A_PushAll : ActiveAugment
     {
         InGameManager.Instance.poolmanager.Get(18);
     }
+    public override void OnDisable()
+    {
+
+    }
 }
